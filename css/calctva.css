@@ -1,4 +1,253 @@
+
+
+:root {
+    --MainBack: #2E2828;
+
+    --BtnBack: #0A96F7;
+    --BtnSecBack: #01BB16;
+    --TxtColor: white;
+
+
+    --FontMain: 'Roboto', garmond, times, serif;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url("/fonts/roboto-regular.ttf");
+}
+
+
 body {
-    background: black;
-    color: white;
+    background: var(--MainBack);
+    color: var(--TxtColor);
+    max-width: 100%;
+    font-family: var(--FontMain);
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+/*************** HEADER ********************/
+
+header {
+    width: 100%;
+}
+
+#btnSettings, #btnThemeSwitch {
+    border: none;
+    width: 50px;
+    height: 50px;
+    filter: drop-shadow(0px 2px 5px black);
+}
+
+#btnThemeSwitch {
+    background: url("/imgs/moon.svg") center / contain no-repeat;
+}
+
+#btnSettings {
+    background: url("/imgs/settings.svg") center / contain no-repeat;
+}
+
+#dSettings {
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+}
+
+
+/************* CALC SECTION *********/
+
+#sectCalc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+
+@media screen and (min-width: 1000px) {
+    main {
+        width: 50%;
+        margin: 4% auto;
+    }
+}
+
+#dCalcWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.dCalc {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 6% auto;
+    font-size: 1.4em;
+    letter-spacing: 0.05em;
+}
+
+.dCalc .copy {
+    background-color: var(--BtnBack);
+    padding: 0.3em 0.4em;
+}
+
+    @media screen and (min-width: 500px) {
+        .dCalc {
+            justify-content: space-evenly;
+        }
+
+        .dCalc input, .dCalc .copy {
+            padding: 0.5em;
+        }
+    }
+
+.dCalc input, .dCalc button {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px black, inset -2px -2px 3px rgba(0,0,0,0.5);
+    transition: background-color 0.3s, border 0.3s;
+}
+
+.dCalc input:focus, .dCalc button:focus, .dCalc input:active, .dCalc button:active {
+    outline: 2px solid var(--BtnBack);
+}
+
+.dCalc input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.dCalc label {
+    width: 15%;
+    text-align: center;
+}
+
+#dBtns {
+    justify-content: center;
+}
+
+#dBtns button {
+    background-color: var(--BtnBack);
+    color: var(--TxtColor);
+    padding: 0.4em 0.4em;
+    margin: 0 2%;
+    width: 100%;
+}
+
+#dBtns button.active {
+    background-color: var(--TxtColor);
+    color: var(--BtnBack);
+    box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
+}
+
+#dAdd {
+    justify-content: center;
+}
+
+#dAdd button {
+    background-color: var(--BtnSecBack);
+    padding: 0.75em 2.5em;
+}
+
+/********* DETAILS SECTION ********/
+
+#sectDetails {
+    width: 90%;
+    text-align: center;
+    display: none;
+    flex-direction: column;
+    margin-bottom: 4%;
+}
+
+#dTits, .dEntry {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+#dTits h2, .dEntry p {
+    width: 33%;
+}
+
+.dEntry {
+    border-top: 1px solid grey;
+    box-shadow: 0px 2px 5px black;
+    margin: 2% auto;
+}
+
+.dEntry:nth-child(5) {
+    border-top: 1px solid grey;
+}
+
+.dEntry p {
+    text-align: right;
+    margin-right: 10%;
+}
+
+.dTotal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2% auto;
+}
+
+.dTotal p {
+    width: 30%;
+    text-align: right;
+    margin-right: 8%;
+}
+
+    @media screen and (min-width: 500px) {
+            .dTotal p, .dEntry p {
+                margin-right: 12%;
+            }
+        }
+
+#dTotals {
+    border: 1px solid grey;
+    box-shadow: 0px 2px 5px black;
+}
+
+/********************/
+
+#successMessage {
+    display: flex;
+    opacity: 0;
+    color: var(--TxtColor);
+    animation: fadeInAndOut 3s forwards;
+    text-align: center;
+}
+
+@keyframes fadeInAndOut {
+    0% {
+        opacity: 0;
+    }
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
 }

@@ -1,10 +1,113 @@
-<html lang="fr">
 <head>
-    <title>Calc TVA</title>
+    <meta charset="utf-8">
+	<meta name="Viewport" content="width=device-width, initial-scale=1" />
+
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8559-1"/>
+
+	<meta name="description" content="__FULL-DESCRIPTION__"/>
+	<meta name="abstract" content="__FULL-ABSTRACT__"/>
+	<meta name="keywords" content="__KEYWORD, KEYWORD, KEYWORD, …_"/>
+
+	<meta name="author" content="Derek Erb Solutions"/>
+    <link rel="author" href="https://derekerb.solutions" />
+	<meta name="copyright" content="Copyright © Derek Erb Solutions"/>
+    <meta name="designer" content="Derek Erb" />
+    <meta name="generator" content="Hand-coded by Derek Erb" />
+	<meta name="owner" content="webmaster@derekerb.solutions"/>
+
+    <meta name="language" content="English" />
+    <meta name="Content-language" content="en-gb" />
+
+	<meta name="rating" content="Safe For Kids"/>
+	<meta name="Resource-Type" content="document" />
+	<meta name="Distribution" content="global" />
+	<meta name="Robots" content="all, index, follow" />
+	<meta name="Revisit-After" content="14 days" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="CalcTVA" />
+    <meta property="og:description" content="XXX SITE DESCRIPTION" />
+    <meta property="og:url" content="http://calctva.app" />
+    <meta property="og:site_name" content="CalcTVA" />
+
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+
+    <link rel="canonical" href="http://pageURL" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:description" content="XXX DESCRIPTION" />
+    <meta name="twitter:title" content="XXX SITE NAME" />
+
+    <!-- icons -->
+    <meta property="og:image" content="http://des-dev/favicon-96x96.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="98" />
+    <meta property="og:image:height" content="98" />
+    <meta property="og:image:alt" content="Derek Erb" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel = "icon" type = "image/png" sizes = "96x96" href = "/favicon-96x96.png" />
+    <link rel = "icon" type = "image/png" sizes = "16x16" href = "/favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+
+    <meta name="HandheldFriendly" content="true" />
+	<meta name="MobileOptimized" content="320" />
+
+	<title>CalcTVA</title>
+    <link type="text/css" rel="stylesheet" href="/css/normalise.css">
+    <link type="text/css" rel="stylesheet" href="/css/calctva.css">
+
+    <script src="/js/calctva.js"></script>
 </head>
 
 <body>
-<p>Hello World!</p>
-</body>
 
-</html>
+    <header>
+    </header>
+    <main>
+        <div id="dSettings">
+            <button id="btnThemeSwitch" class="darkTheme"></button>
+            <button id="btnSettings"></button>
+        </div>
+        <section id="sectCalc">
+            <div id="dCalcWrap">
+                <div id="dHT" class="dCalc">
+                    <label for="fldHT">HT</label>
+                    <input type="number" id="fldHT">
+                    <button class="copy">📑</button>
+                </div>
+
+                <div id="dBtns" class="dCalc">
+                    <button id="btn20" data-value="0.2" class="btnPerc active">20 %</button>
+                    <button id="btn10" data-value="0.1" class="btnPerc">10 %</button>
+                    <button id="btn5_5" data-value="0.055" class="btnPerc">5,5 %</button>
+                    <button id="btn2_1" data-value="0.021" class="btnPerc">2,1 %</button>
+                </div>
+
+                <div id="dTTC" class="dCalc">
+                    <label for="fldTTC">TTC</label>
+                    <input type="number" id="fldTTC">
+                    <button class="copy">📑</button>
+                </div>
+
+                <div id="dAdd" class="dCalc">
+                    <button id="btnAdd">ENREGISTRER</button>
+                </div>
+            </div>
+        </section>
+        <section id="sectDetails">
+            <h1>TOTAUX</h1>
+            <div id="dTits">
+                <h2>HT</h2>
+                <h2>Taux</h2>
+                <h2>TTC</h2>
+            </div>
+            <div id="dTotals"></div>
+            <h1>DÉTAILS</h1>
+        </section>
+    </main>
+</body>
