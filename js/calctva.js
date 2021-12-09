@@ -1,24 +1,41 @@
-/* JavaScript */
-/* CalcTVA JS */
+/*********************************************************************
+ *
+ *  CalcTVA
+ *  Version 1.0
+ *
+ *  Created by Derek Erb Solutions ( https://derekerb.solutions)
+ *  JavaScript programming and CSS styling by
+ *  Victor Polouchine (victor@derekerb.solutions)
+ *
+ ********************************************************************/
 
 class CalcTVA {
 
-    ttc;
-    ht;
+    fldTTC;
+    fldHT;
     arrBtns = [];
     percentage;
-    lastEntry;
-    arrTotals = [
-        [0, 0.2, 0],
-        [0, 0.1, 0],
-        [0, 0.055, 0],
-        [0, 0.021, 0]
-    ];
 
     constructor(idTTC, idHT, btnsClass) {
-        this.ttc = document.getElementById(idTTC);
-        this.ht = document.getElementById(idHT);
-        this.arrBtns = document.querySelectorAll(btnsClass)
+        this.fldTTC     = document.getElementById(idTTC);
+        this.fldHT      = document.getElementById(idHT);
+        this.arrBtns    = document.querySelectorAll(btnsClass)
+    }
+
+    /**********************************************************
+     ** calculateHT()
+     ** sets HT value from TTC field value
+     **********************************************************/
+    calculateHT() {
+        this.fldHT.value = (parseFloat(this.fldTTC.value) / this.taux).toFixed(2);
+    }
+
+    /**********************************************************
+     ** calculateTTC()
+     ** sets TTC value from HT input field
+     **********************************************************/
+    calculateTTC() {
+        this.fldTTC.value = (parseFloat(this.fldHT.value) * this.taux).toFixed(2);
     }
 
     /**********************************************************
@@ -26,45 +43,23 @@ class CalcTVA {
     ** gets the selected button's data-value to set percentage
     **********************************************************/
     getPercentage() {
-
         this.arrBtns.forEach(button => {
             if (button.classList.contains('active')) this.percentage = parseFloat(button.dataset.value);
+            this.taux = 1 + this.percentage;
         })
     }
 
-    /**********************************************************
-    ** calculateTTC()
-    ** sets TTC value from HT input field
-    **********************************************************/
-    calculateTTC() {
-        this.taux = 1 + this.percentage;
-        this.ttc.value = (parseFloat(this.ht.value) * this.taux).toFixed(2);
-    }
-
-    /**********************************************************
-    ** calculateHT()
-    ** sets HT value from TTC input field
-    **********************************************************/
-    calculateHT() {
-        this.taux = 1 + this.percentage;
-        this.ht.value = (parseFloat(this.ttc.value) / this.taux).toFixed(2);
-    }
 }
 
 
 /******* Events to trigger once the DOM is loaded ********/
 document.addEventListener('DOMContentLoaded', () => {
 
-    /******* Creates the calculator ********/
-    const calcCreation = () => {
-        calc = new CalcTVA('fldTTC', 'fldHT', '.btnPerc');
-        calc.getPercentage();
-    }
-
-    calcCreation();
+    // Create calc class instance
+    const calc = new CalcTVA('fldTTC', 'fldHT', '.btnPerc');
+    calc.getPercentage();
 
     document.addEventListener('click', (event) => {
-
         /********* Handles the rate *********/
         if (event.target.classList.contains('btnPerc')) {
             document.querySelectorAll('.btnPerc').forEach(button => {
@@ -76,10 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
             calc.calculateTTC();
             calc.calculateHT();
         }
-
     });
 
-    /******* Changes HT or TTC field whenever the other changes *********/
+    /******* Changes HT or TTC field whenever the other field changes *********/
     document.addEventListener('input', (event) => {
         if (event.target === document.getElementById('fldHT')) calc.calculateTTC();
         if (event.target === document.getElementById('fldTTC')) calc.calculateHT();
