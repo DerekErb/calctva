@@ -112,7 +112,8 @@ header {
 
     @media screen and (min-width: 500px) {
         .dCalc {
-            justify-content: space-evenly;
+            justify-content: end;
+            width: 90%;
         }
 
         .dCalc input, .dCalc .copy {
@@ -125,6 +126,10 @@ header {
     border-radius: 5px;
     box-shadow: 2px 2px 4px black, inset -2px -2px 3px rgba(0,0,0,0.5);
     transition: background-color 0.3s, border 0.3s;
+}
+
+.dCalc input {
+    text-align: right;
 }
 
 .dCalc input:focus, .dCalc button:focus, .dCalc input:active, .dCalc button:active {
@@ -152,6 +157,14 @@ input::-webkit-inner-spin-button {
     padding: 0.4em 0.4em;
     margin: 0 2%;
     width: 100%;
+}
+
+#dBtns button:first-child {
+    margin-left: 0%;
+}
+
+#dBtns button:last-child {
+    margin-right: 0%;
 }
 
 #dBtns button.active {
@@ -193,7 +206,7 @@ input::-webkit-inner-spin-button {
 .dEntry {
     border-top: 1px solid grey;
     box-shadow: 0px 2px 5px black;
-    margin: 2% auto;
+    margin: 1% auto;
 }
 
 .dEntry:nth-child(5) {
