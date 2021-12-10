@@ -89,6 +89,7 @@ header {
     justify-content: center;
     align-items: center;
     width: 90%;
+    margin-top: 100px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -223,7 +224,7 @@ input::-webkit-inner-spin-button {
 .dEntry {
     border-top: 1px solid grey;
     box-shadow: 0px 2px 5px black;
-    margin: 1% auto;
+    margin: 4px auto;
 }
 
 .dEntry:nth-child(5) {
@@ -232,7 +233,7 @@ input::-webkit-inner-spin-button {
 
 .dEntry p {
     text-align: right;
-    margin-right: 10%;
+    margin-right: 6%;
 }
 
 .dTotal {
@@ -245,12 +246,18 @@ input::-webkit-inner-spin-button {
 .dTotal p {
     width: 30%;
     text-align: right;
-    margin-right: 8%;
+    margin-right: 6%;
 }
 
     @media screen and (min-width: 500px) {
             .dTotal p, .dEntry p {
                 margin-right: 12%;
+            }
+        }
+
+    @media screen and (min-width: 1900px) {
+            .dTotal p, .dEntry p {
+                margin-right: 13.5%;
             }
         }
 
