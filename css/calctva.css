@@ -113,7 +113,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin: 6% auto;
+    margin: 2% auto;
     font-size: 1.4em;
     letter-spacing: 0.05em;
 }
@@ -161,6 +161,26 @@ input::-webkit-inner-spin-button {
     text-align: center;
 }
 
+#dTVA {
+    width: 100%;
+    margin: 1% auto;
+}
+
+#dTVA p {
+    margin: 0;
+}
+
+#dTVA p:first-child {
+    width: 15%;
+    text-align: center;
+}
+
+#pTVA {
+    text-align: right;
+    padding: 0em 0.5em 0em 0.4em;
+    font-style: italic;
+}
+
 #dBtns {
     justify-content: center;
 }
@@ -187,13 +207,42 @@ input::-webkit-inner-spin-button {
     box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
 }
 
+#dCommands {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 4%;
+}
+
+#dCommands button {
+    appearance: none;
+    border: none;
+    height: 50px;
+    width: 50px;
+}
+
+#dCommands button svg {
+    pointer-events: none;
+}
+
+#dCommands #btnUndo {
+    background: url("/imgs/undo.svg") center / cover;
+}
+
+#dCommands #btnReset {
+    background: url("/imgs/reset.svg") center / cover;
+    transform: rotateZ(-180deg);
+}
+
 #dAdd {
     justify-content: center;
 }
 
 #dAdd button {
     background-color: var(--BtnSecBack);
-    padding: 0.75em 2.5em;
+    padding: 0.5em 2.5em;
 }
 
 /*********************************************************************
@@ -208,6 +257,15 @@ input::-webkit-inner-spin-button {
     display: none;
     flex-direction: column;
     margin-bottom: 4%;
+}
+
+#sectDetails h1 {
+    font-size: 1.5em;
+    margin: 2% auto 0 auto;
+}
+
+#sectDetails h2 {
+    margin: 3% auto;
 }
 
 #dTits, .dEntry {
@@ -240,13 +298,15 @@ input::-webkit-inner-spin-button {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 2% auto;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .dTotal p {
-    width: 30%;
+    width: 25%;
     text-align: right;
-    margin-right: 6%;
+    margin: 1% 4% 1% 4%;
+    font-size: 1.2em;
 }
 
     @media screen and (min-width: 500px) {
@@ -264,6 +324,16 @@ input::-webkit-inner-spin-button {
 #dTotals {
     border: 1px solid grey;
     box-shadow: 0px 2px 5px black;
+}
+
+.dTotal .pRate {
+    width: 100%;
+    text-align: left;
+    margin: 4% 0 2% 5%;
+    font-style: italic;
+    text-decoration: underline;
+    font-weight: 900;
+    font-size: 1em;
 }
 
 /********************/
