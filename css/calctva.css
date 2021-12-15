@@ -12,7 +12,11 @@
 :root {
     --MainBack: #2E2828;
 
-    --BtnBack: #0A96F7;
+
+    --BtnBack-1: #043354;
+    --BtnBack-2: #065993;
+    --BtnBack-3: #0267ab;
+    --BtnBack-4: #0876c2;
     --BtnSecBack: #01BB16;
     --TxtColor: white;
 
@@ -44,6 +48,26 @@ main {
 
 button:hover {
     cursor: pointer;
+}
+
+input:read-only {
+    background-color: var(--MainBack);
+    color: var(--TxtColor);
+    box-shadow: none;
+}
+
+#navMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--MainBack);
+    height: 55px;
+    width: 100%;
+    background-color: #01BB16;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
 
 /*************** HEADER ********************/
@@ -89,7 +113,7 @@ header {
     justify-content: center;
     align-items: center;
     width: 90%;
-    margin-top: 100px;
+    margin-top: 70px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -119,7 +143,7 @@ header {
 }
 
 .dCalc .copy {
-    background-color: var(--BtnBack);
+    background-color: var(--BtnBack-4);
     padding: 0.3em 0.4em;
 }
 
@@ -147,7 +171,7 @@ header {
 }
 
 .dCalc input:focus, .dCalc button:focus, .dCalc input:active, .dCalc button:active {
-    outline: 2px solid var(--BtnBack);
+    outline: 2px solid var(--BtnBack-4);
 }
 
 .dCalc input::-webkit-outer-spin-button,
@@ -156,9 +180,13 @@ input::-webkit-inner-spin-button {
     -moz-appearance: textfield;
 }
 
+.dCalc input:read-only {
+    box-shadow: none;
+}
+
 .dCalc label {
-    width: 15%;
-    text-align: center;
+    width: 20%;
+    text-align: right;
 }
 
 #dTVA {
@@ -186,7 +214,7 @@ input::-webkit-inner-spin-button {
 }
 
 #dBtns button {
-    background-color: var(--BtnBack);
+    background-color: var(--BtnBack-4);
     color: var(--TxtColor);
     padding: 0.4em 0.4em;
     margin: 0 2%;
@@ -195,15 +223,25 @@ input::-webkit-inner-spin-button {
 
 #dBtns button:first-child {
     margin-left: 0%;
+    background-color: var(--BtnBack-1);
+}
+
+#dBtns button:nth-child(2) {
+    background-color: var(--BtnBack-2);
+}
+
+#dBtns button:nth-child(3) {
+    background-color: var(--BtnBack-3);
 }
 
 #dBtns button:last-child {
     margin-right: 0%;
+    background-color: var(--BtnBack-4);
 }
 
 #dBtns button.active {
     background-color: var(--TxtColor);
-    color: var(--BtnBack);
+    color: var(--BtnBack-4);
     box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
 }
 
@@ -266,6 +304,7 @@ input::-webkit-inner-spin-button {
 
 #sectDetails h2 {
     margin: 3% auto;
+    font-size: 1.3em;
 }
 
 #dTits, .dEntry {
@@ -300,23 +339,36 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     margin: 0 auto;
     flex-wrap: wrap;
+    padding: 0 2% 2% 0;
 }
 
-.dTotal p {
-    width: 25%;
+.dTotal input {
+    width: 30%;
     text-align: right;
-    margin: 1% 4% 1% 4%;
     font-size: 1.2em;
+    border: none;
+}
+
+
+.dTotal .lblRate {
+    width: 100%;
+    text-align: right;
+    margin: 2% 0 2% 5%;
+    font-style: italic;
+    font-weight: 900;
+    font-size: 1em;
+    padding-right: 75%;
 }
 
     @media screen and (min-width: 500px) {
-            .dTotal p, .dEntry p {
-                margin-right: 12%;
+            .dTotal input, .dEntry p {
+                margin-right: 7%;
+                width: 22%;
             }
         }
 
     @media screen and (min-width: 1900px) {
-            .dTotal p, .dEntry p {
+            .dTotal input, .dEntry p {
                 margin-right: 13.5%;
             }
         }
@@ -326,15 +378,22 @@ input::-webkit-inner-spin-button {
     box-shadow: 0px 2px 5px black;
 }
 
-.dTotal .pRate {
-    width: 100%;
-    text-align: left;
-    margin: 4% 0 2% 5%;
-    font-style: italic;
-    text-decoration: underline;
-    font-weight: 900;
-    font-size: 1em;
+#dTotal200, #dTotal200 input {
+    background-color: var(--BtnBack-1);
 }
+
+#dTotal100, #dTotal100 input {
+    background-color: var(--BtnBack-2);
+}
+
+#dTotal55, #dTotal55 input {
+    background-color: var(--BtnBack-3);
+}
+
+#dTotal21, #dTotal21 input {
+    background-color: var(--BtnBack-4);
+}
+
 
 /********************/
 

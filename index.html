@@ -78,24 +78,24 @@
 
                 <div id="dHT" class="dCalc">
                     <label for="fldHT">HT</label>
-                    <input type="number" inputmode="decimal" id="fldHT" autofocus>
+                    <input type="number" inputmode="decimal" id="fldHT" autofocus aria-label="Champ Hors-Taxe">
                 </div>
 
                 <div id="dTVA" class="dCalc">
-                    <p>TVA</p>
-                    <p id="pTVA"></p>
+                    <label for="fldTVA">TVA</label>
+                    <input id="fldTVA" type="number" readonly aria-label="Montant TVA" aria-live="polite">
                 </div>
 
                 <div id="dTTC" class="dCalc">
                     <label for="fldTTC">TTC</label>
-                    <input type="number" inputmode="decimal" id="fldTTC">
+                    <input type="number" inputmode="decimal" id="fldTTC" aria-label="Champ TTC">
                 </div>
 
                 <div id="dBtns" class="dCalc">
-                    <button id="btn20" data-value="0.2" class="btnPerc active">20 %</button>
-                    <button id="btn10" data-value="0.1" class="btnPerc">10 %</button>
-                    <button id="btn5_5" data-value="0.055" class="btnPerc">5,5 %</button>
-                    <button id="btn2_1" data-value="0.021" class="btnPerc">2,1 %</button>
+                    <button id="btn0" data-value="0.2" class="btnPerc active">20 %</button>
+                    <button id="btn1" data-value="0.1" class="btnPerc">10 %</button>
+                    <button id="btn2" data-value="0.055" class="btnPerc">5,5 %</button>
+                    <button id="btn3" data-value="0.021" class="btnPerc">2,1 %</button>
                 </div>
 
                 <div id="dAdd" class="dCalc">
@@ -116,4 +116,5 @@
             </div> -->
         </section>
     </main>
+    <nav id="navMain">Navigation</nav>
 </body>

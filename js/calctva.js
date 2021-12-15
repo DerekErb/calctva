@@ -11,13 +11,14 @@
 
 class CalcTVA {
 
-    fldTTC;
     fldHT;
-    pTVA;
-    arrBtns = [];
+    fldTTC;
+    fldTVA;
+    ht;
+    ttc;
+    tva;
     btnUndo;
     btnReset;
-    percentage;
     lastEntry = [];
     arrTotals = [
         [0.2, 0, 0, 0],
@@ -25,56 +26,73 @@ class CalcTVA {
         [0.055, 0, 0, 0],
         [0.021, 0, 0, 0]
     ];
-    ht;
-    ttc;
-    tva;
 
-    constructor(idTTC, idHT, idTVA, btnsClass, idBtnUndo, idBtnReset) {
+
+    constructor(idTTC, idHT, idTVA, idBtnUndo, idBtnReset) {
         this.fldTTC         = document.getElementById(idTTC);
         this.fldHT          = document.getElementById(idHT);
-        this.pTVA           = document.getElementById(idTVA);
-        this.arrBtns        = document.querySelectorAll(btnsClass)
+        this.fldTVA         = document.getElementById(idTVA);
         this.btnUndo        = document.getElementById(idBtnUndo);
         this.btnReset       = document.getElementById(idBtnReset);
     }
 
-    /**************************************************************
-    ** addToTotals()
-    ** Adds the new entry to the totals array
-    **************************************************************/
-    addToTotals() {
 
-        for (let i = 0; i < this.arrTotals.length; i++) {
-            if (this.arrTotals[i][0] === this.lastEntry[0]) {
-                this.arrTotals[i][1] += this.lastEntry[1];
-                this.arrTotals[i][2] += this.lastEntry[2];
-                this.arrTotals[i][3] += this.lastEntry[3];
-            }
-          }
+    /*************************************************************************
+    ** addEntry()
+    ** Creates an entry in Details section and calls updateTotals
+    *************************************************************************/
+    addEntry() {
+        this.lastEntry = [this.lastEntry[0], parseFloat(this.fldHT.value), parseFloat(this.tva) , parseFloat(this.fldTTC.value)];
+        this.updateTotals();
+        //    this.addEntryHTML();
     }
 
+    /**************************************************************************************
+    ** addEntryHTML()
+    ** Creates all the HTML elements of the last entry and inserts them in #sectDetails
+    ***************************************************************************************/
+    /*addEntryHTML() {
+        let div = document.createElement('div');
+        div.classList.add('dEntry');
+        let input1 = document.createElement('p');
+        input1.classList.add('pHT');
+        input1.innerHTML = this.lastEntry[0].toFixed(2) + '€';
+        let input2 = document.createElement('p');
+        input2.classList.add('pTaux');
+        input2.innerHTML = (this.lastEntry[0] * 100).toFixed(2) + ' %';
+        let input3 = document.createElement('p');
+        input3.classList.add('pTTC');
+        input3.innerHTML = this.lastEntry[2].toFixed(2) + '€';
+        div.appendChild(input1);
+        div.appendChild(input2);
+        div.appendChild(input3);
+        document.getElementById('sectDetails').insertBefore(div, document.querySelector('.dEntry'));
+    } */
+
     /**********************************************************
-     ** calculateHT()
+     *** calcHT()
      ** sets HT value from TTC field value
      **********************************************************/
-    calculateHT() {
-        this.fldHT.value = (parseFloat(this.fldTTC.value) / this.taux).toFixed(2);
+    calcHT() {
+        this.setTTC();
+        this.ht = parseFloat(this.ttc / this.taux).toFixed(2);
     }
 
     /**********************************************************
-     ** calculateTTC()
+     ** calcTTC()
      ** sets TTC value from HT input field
      **********************************************************/
-    calculateTTC() {
-        this.fldTTC.value = (parseFloat(this.fldHT.value) * this.taux).toFixed(2);
+    calcTTC() {
+        this.setHT();
+        this.ttc = parseFloat(this.ht * this.taux).toFixed(2);
     }
 
     /**********************************************************
-     ** calculateTVA()
+     ** calcTVA()
      ** sets TVA value from HT and TTC input fields
      **********************************************************/
 
-    calculateTVA() {
+    calcTVA() {
         if (this.fldHT.value === '') {
             this.tva = 0;
         }
@@ -83,103 +101,13 @@ class CalcTVA {
         }
     }
 
-    /*************************************************************************
-    ** createEntry()
-    ** Creates an entry in Details section and calls addToTotals
-    *************************************************************************/
-    createEntry() {
-        this.lastEntry = [ this.percentage, parseFloat(this.fldHT.value), parseFloat(this.tva) , parseFloat(this.fldTTC.value)];
-        this.addToTotals();
-        //    this.createEntryHTML();
-    }
-
-    /**************************************************************************************
-    ** createEntryHTML()
-    ** Creates all the HTML elements of the last entry and inserts them in #sectDetails
-    ***************************************************************************************/
-    /*createEntryHTML() {
-        let div = document.createElement('div');
-        div.classList.add('dEntry');
-        let p1 = document.createElement('p');
-        p1.classList.add('pHT');
-        p1.innerHTML = this.lastEntry[0].toFixed(2) + '€';
-        let p2 = document.createElement('p');
-        p2.classList.add('pTaux');
-        p2.innerHTML = (this.lastEntry[0] * 100).toFixed(2) + ' %';
-        let p3 = document.createElement('p');
-        p3.classList.add('pTTC');
-        p3.innerHTML = this.lastEntry[2].toFixed(2) + '€';
-        div.appendChild(p1);
-        div.appendChild(p2);
-        div.appendChild(p3);
-        document.getElementById('sectDetails').insertBefore(div, document.querySelector('.dEntry'));
-    } */
-
-
-    /**********************************************************
-    ** getPercentage()
-    ** gets the selected button's data-value to set percentage
-    **********************************************************/
-    getPercentage() {
-        this.arrBtns.forEach(button => {
-            if (button.classList.contains('active')) this.percentage = parseFloat(button.dataset.value);
-            this.taux = 1 + this.percentage;
-        })
-    }
-
-    /**************************************************************************
-    ** renderTotals()
-    ** Renders the totals of each array (creates the elements or updates them)
-    **************************************************************************/
-    renderTotals() {
-        this.arrTotals.forEach(array => {
-            if (!document.getElementById('dTotal'  + (array[0] * 100).toString())) {
-                if (array[1] !== 0) {
-                    let div = document.createElement('div');
-                    div.classList.add('dTotal');
-                    div.id = 'dTotal' + (array[0] * 100).toString();
-                    let pRate = document.createElement('p');
-                    pRate.classList.add('pRate');
-                    pRate.innerHTML = (array[0] * 100).toFixed(2) + ' %';
-                    let p1 = document.createElement('p');
-                    p1.classList.add('pHT');
-                    p1.innerHTML = (array[1]).toFixed(2) + '€';
-                    let p2 = document.createElement('p');
-                    p2.classList.add('pTVA');
-                    p2.innerHTML = array[2].toFixed(2) + '€';
-                    let p3 = document.createElement('p');
-                    p3.classList.add('pTTC');
-                    p3.innerHTML = array[3].toFixed(2) + '€';
-                    div.appendChild(pRate);
-                    div.appendChild(p1);
-                    div.appendChild(p2);
-                    div.appendChild(p3);
-                    document.getElementById('dTotals').appendChild(div);
-                }
-            }
-            else
-            {
-                document.getElementById('dTotal'  + (array[0] * 100).toString()).querySelector('.pHT').innerHTML = array[1].toFixed(2) + '€';
-                document.getElementById('dTotal'  + (array[0] * 100).toString()).querySelector('.pRate').innerHTML = (array[0] * 100).toFixed(2) + ' %';
-                document.getElementById('dTotal'  + (array[0] * 100).toString()).querySelector('.pTTC').innerHTML = array[3].toFixed(2) + '€';
-                document.getElementById('dTotal'  + (array[0] * 100).toString()).querySelector('.pTVA').innerHTML = array[2].toFixed(2) + '€';
-            }
-        })
-    }
-
-    /**************************************************************************
-    ** undo()
-    ** Substracts last entry from corresponding subarray in arrTotals
-    **************************************************************************/
-    undo() {
-        for (let i = 0; i < this.arrTotals.length; i++) {
-            if (this.arrTotals[i][0] === this.lastEntry[0]) {
-                this.arrTotals[i][1] -= this.lastEntry[1];
-                this.arrTotals[i][2] -= this.lastEntry[2];
-                this.arrTotals[i][3] -= this.lastEntry[3];
-            }
-          }
-        this.renderTotals();
+    /*****************************************************************************************************
+    ** getTaux()
+    ** Gets the passed button's data-value to set percentage and ID to set lastEntry's first item
+    *****************************************************************************************************/
+    getTaux(strBtnID = 'btn0') {
+        this.taux = 1 + parseFloat(document.getElementById(strBtnID).dataset.value);
+        this.lastEntry[0] = parseInt(strBtnID.slice(strBtnID.length -1));
     }
 
     /**************************************************************************
@@ -193,41 +121,134 @@ class CalcTVA {
             [0.055, 0, 0, 0],
             [0.021, 0, 0, 0]
         ];
-        this.renderTotals();
+        this.showTotals();
         this.fldTTC.value = '';
         this.fldHT.value = '';
         this.tva = 0;
         this.showTVA();
         document.querySelector('input[lastused]').select();
+        document.querySelectorAll('.dTotal').forEach(total => total.remove());
+        document.getElementById('sectDetails').style.display = 'none';
     }
 
-
-    getHT() {
-        this.ht = parseFloat(this.fldHT.value).toFixed(2);
+    /**************************************************************************
+    ** setHT()
+    ** Sets the value of HT from the HT field
+    **************************************************************************/
+    setHT(fHT) {
+        this.ht = fHT || parseFloat(this.fldHT.value).toFixed(2);
     }
 
-    getTTC() {
-        this.ttc = parseFloat(this.fldTTC.value).toFixed(2);
+    /**************************************************************************
+    ** setTTC()
+    ** Sets the value of ttc from the TTC field
+    **************************************************************************/
+    setTTC(fTTC) {
+        this.ttc = fTTC || parseFloat(this.fldTTC.value).toFixed(2);
     }
 
-    calcHT() {
-        this.ht = this.ttc / this.taux;
-    }
-
-    calcTTC() {
-        this.ttc = this.ht * this.taux;
-    }
-
+    /**************************************************************************
+    ** showHT()
+    ** Displays the value of HT in the HT field
+    **************************************************************************/
     showHT() {
+        this.calcHT();
         this.fldHT.value = this.ht;
     }
 
+    /**************************************************************************
+    ** showTotals()
+    ** Renders the totals of each array (creates the elements or updates them)
+    **************************************************************************/
+    showTotals() {
+        this.arrTotals.forEach(array => {
+            if (!document.getElementById('dTotal'  + (array[0] * 1000).toString())) {
+                if (array[1] !== 0) {
+                    let div = document.createElement('div');
+                    div.classList.add('dTotal');
+                    div.id = 'dTotal' + (array[0] * 1000).toString();
+                    let lblRate = document.createElement('label');
+                    lblRate.classList.add('lblRate');
+                    lblRate.innerHTML = (array[0] * 100).toFixed(2) + ' %';
+                    lblRate.setAttribute('for', 'inputTVA' + (array[0] * 100).toString());
+                    lblRate.setAttribute('aria-label', 'Totaux' + (array[0] * 100).toString() + '%');
+                    let input1 = document.createElement('input');
+                    input1.classList.add('inputHT');
+                    input1.setAttribute('readonly', '');
+                    input1.setAttribute('aria-label', 'Total Hors-Taxe' + (array[0] * 100).toString() + '%');
+                    input1.value = (array[1]).toFixed(2) + '€';
+                    let input2 = document.createElement('input');
+                    input2.classList.add('inputTVA');
+                    input2.id = 'inputTVA' + (array[0] * 100).toString();
+                    input2.setAttribute('readonly', '');
+                    input2.setAttribute('aria-label', 'Total TVA' + (array[0] * 100).toString() + '%');
+                    input2.value = array[2].toFixed(2) + '€';
+                    let input3 = document.createElement('input');
+                    input3.classList.add('inputTTC');
+                    input3.setAttribute('readonly', '');
+                    input3.setAttribute('aria-label', 'Total TTC' + (array[0] * 100).toString() + '%');
+                    input3.value = array[3].toFixed(2) + '€';
+                    div.appendChild(lblRate);
+                    div.appendChild(input1);
+                    div.appendChild(input2);
+                    div.appendChild(input3);
+                    document.getElementById('dTotals').appendChild(div);
+                }
+            }
+            else
+            {
+                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputHT').value = array[1].toFixed(2) + '€';
+                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.lblRate').innerHTML = (array[0] * 100).toFixed(2) + ' %';
+                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputTTC').value = array[3].toFixed(2) + '€';
+                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputTVA').value = array[2].toFixed(2) + '€';
+            }
+        })
+    }
+
+    /**************************************************************************
+    ** showTTC()
+    ** Displays the value of TTC in the TTC field
+    **************************************************************************/
     showTTC() {
+        this.calcTTC();
         this.fldTTC.value = this.ttc;
     }
 
+    /**************************************************************************
+    ** showTVA()
+    ** Displays the value of TVA in the TVA field
+    **************************************************************************/
     showTVA() {
-        this.pTVA.innerHTML = this.tva;
+        this.calcTVA();
+        this.fldTVA.value = this.tva;
+    }
+
+    /**************************************************************************
+    ** undo()
+    ** Updates the totals by substracting lastEntry to totals
+    **************************************************************************/
+    undo() {
+        this.updateTotals(false);
+    }
+
+    /**************************************************************
+    ** updateTotals()
+    ** Adds or substracts the new entry to the totals array
+    **************************************************************/
+    updateTotals(bAdd = true, bShow = true) {
+        if (bAdd) {
+            this.arrTotals[this.lastEntry[0]][1] += this.lastEntry[1];
+            this.arrTotals[this.lastEntry[0]][2] += this.lastEntry[2];
+            this.arrTotals[this.lastEntry[0]][3] += this.lastEntry[3];
+        }
+        else {
+            this.arrTotals[this.lastEntry[0]][1] -= this.lastEntry[1];
+            this.arrTotals[this.lastEntry[0]][2] -= this.lastEntry[2];
+            this.arrTotals[this.lastEntry[0]][3] -= this.lastEntry[3];
+        }
+
+        if (bShow) this.showTotals();
+
     }
 
 }
@@ -237,8 +258,9 @@ class CalcTVA {
 document.addEventListener('DOMContentLoaded', () => {
 
     // Create calc class instance
-    calc = new CalcTVA('fldTTC', 'fldHT', 'pTVA', '.btnPerc', 'btnUndo', 'btnReset');
-    calc.getPercentage();
+    calc = new CalcTVA('fldTTC', 'fldHT', 'fldTVA', 'btnUndo', 'btnReset');
+    calc.getTaux();
+    calc.showTVA();
 
     document.addEventListener('click', (event) => {
 
@@ -250,18 +272,17 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.classList.add('active');
 
             /****** Updates the input fields when the rate is changed ********/
-            calc.getPercentage();
-            if (calc.fldTTC.hasAttribute('lastused')) calc.calculateHT();
-            if (calc.fldHT.hasAttribute('lastused')) calc.calculateTTC();
-            calc.calculateTVA();
+            calc.getTaux(event.target.id);
+            if (calc.fldTTC.hasAttribute('lastused')) calc.showHT();
+            if (calc.fldHT.hasAttribute('lastused')) calc.showTTC();
             calc.showTVA();
         }
 
         /******** Creates an entry, calculates and renders the totals, and shows sectDetails if it's hidden *********/
         if (event.target === document.getElementById('btnAdd') && document.getElementById('fldHT').value.length > 0) {
-            calc.createEntry();
+            calc.addEntry();
             document.querySelector('input[lastused]').select();
-            calc.renderTotals();
+            calc.showTotals();
             document.getElementById('sectDetails').style.display = 'flex';
         }
 
@@ -289,18 +310,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /******* Changes HT or TTC field whenever the other field changes *********/
     document.addEventListener('input', (event) => {
-        if (event.target === document.getElementById('fldHT')) calc.calculateTTC();
-        if (event.target === document.getElementById('fldTTC')) calc.calculateHT();
-        calc.calculateTVA();
+        if (event.target === document.getElementById('fldHT')) calc.showTTC();
+        if (event.target === document.getElementById('fldTTC')) calc.showHT();
         calc.showTVA();
     });
 
     /********* Enables entry creation and totals udpdate by pressing Enter key ********/
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' && document.getElementById('fldHT').value.length > 0) {
-            calc.createEntry();
+            calc.addEntry();
             document.querySelector('input[lastused]').select();
-            calc.renderTotals();
+            calc.showTotals();
             document.getElementById('sectDetails').style.display = 'flex';
         }
     });
