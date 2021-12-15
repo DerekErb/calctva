@@ -161,11 +161,12 @@ class CalcTVA {
     ** Shows the totals of each array (creates the elements or updates them)
     **************************************************************************/
     showTotals() {
+
+        document.querySelectorAll('.dTotal').forEach(total => total.remove());
+
         this.arrTotals.forEach(array => {
-            // if total division does not already exist
-            if (!document.getElementById('dTotal'  + (array[0] * 1000).toString())) {
                 if (array[1] !== 0) {
-                    // if totals are not set
+                    // show total if array isn't empty
                     let div = document.createElement('div');
                     div.classList.add('dTotal');
                     div.id = 'dTotal' + (array[0] * 1000).toString();
@@ -196,15 +197,6 @@ class CalcTVA {
                     div.appendChild(input3);
                     document.getElementById('dTotals').appendChild(div);
                 }
-            }
-            // total division already exists
-            else
-            {
-                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputHT').value = array[1].toFixed(2) + '€';
-                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.lblRate').innerHTML = (array[0] * 100).toFixed(2) + ' %';
-                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputTTC').value = array[3].toFixed(2) + '€';
-                document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputTVA').value = array[2].toFixed(2) + '€';
-            }
         })
     }
 
@@ -230,6 +222,9 @@ class CalcTVA {
     **************************************************************************/
     undo() {
         this.updateTotals(false);
+        this.fldTTC.value = '';
+        this.fldHT.value = '';
+        this.showTVA();
     }
 
     /**************************************************************
