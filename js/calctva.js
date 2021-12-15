@@ -127,8 +127,13 @@ class CalcTVA {
         this.showTotals();
         this.showTVA();
 
-        document.querySelector('input[lastused]').select();
         document.querySelectorAll('.dTotal').forEach(total => total.remove());
+        this.getTaux('btn0');
+        document.querySelectorAll('.btnPerc').forEach(button => {
+            button.classList.remove("active");
+        });
+        document.getElementById('btn0').classList.add('active');
+        this.fldHT.select();
         document.getElementById('sectDetails').style.display = 'none';
     }
 
@@ -225,6 +230,8 @@ class CalcTVA {
         this.fldTTC.value = '';
         this.fldHT.value = '';
         this.showTVA();
+        // Return to last selected field
+        document.querySelector('input[lastused]').select();
     }
 
     /**************************************************************
@@ -256,6 +263,9 @@ document.addEventListener('DOMContentLoaded', () => {
     calc = new CalcTVA('fldTTC', 'fldHT', 'fldTVA', 'btnUndo', 'btnReset');
     calc.getTaux();
     calc.showTVA();
+
+    // Initialise first field
+    calc.fldHT.setAttribute("lastused",'');
 
     document.addEventListener('click', (event) => {
 
