@@ -14,11 +14,14 @@ class CalcTVA {
     fldHT;
     fldTTC;
     fldTVA;
+
     ht;
     ttc;
     tva;
+
     btnUndo;
     btnReset;
+
     lastEntry = [];
     arrTotals = [
         [0.2, 0, 0, 0],
@@ -26,7 +29,6 @@ class CalcTVA {
         [0.055, 0, 0, 0],
         [0.021, 0, 0, 0]
     ];
-
 
     constructor(idTTC, idHT, idTVA, idBtnUndo, idBtnReset) {
         this.fldTTC         = document.getElementById(idTTC);
@@ -76,6 +78,7 @@ class CalcTVA {
     calcHT() {
         this.setTTC();
         this.ht = parseFloat(this.ttc / this.taux).toFixed(2);
+        return this.ht;
     }
 
     /**********************************************************
@@ -85,6 +88,7 @@ class CalcTVA {
     calcTTC() {
         this.setHT();
         this.ttc = parseFloat(this.ht * this.taux).toFixed(2);
+        return this.ttc;
     }
 
     /**********************************************************
@@ -93,12 +97,8 @@ class CalcTVA {
      **********************************************************/
 
     calcTVA() {
-        if (this.fldHT.value === '') {
-            this.tva = 0;
-        }
-        else {
-            this.tva = (parseFloat(this.fldTTC.value) - parseFloat(this.fldHT.value)).toFixed(2);
-        }
+        this.tva = (this.fldHT.value === '' ? 0 : (parseFloat(this.fldTTC.value) - parseFloat(this.fldHT.value)).toFixed(2));
+        return this.tva;
     }
 
     /*****************************************************************************************************
@@ -106,8 +106,8 @@ class CalcTVA {
     ** Gets the passed button's data-value to set percentage and ID to set lastEntry's first item
     *****************************************************************************************************/
     getTaux(strBtnID = 'btn0') {
-        this.taux = 1 + parseFloat(document.getElementById(strBtnID).dataset.value);
-        this.lastEntry[0] = parseInt(strBtnID.slice(strBtnID.length -1));
+        this.taux           = 1 + parseFloat(document.getElementById(strBtnID).dataset.value);
+        this.lastEntry[0]   = parseInt(strBtnID.slice(strBtnID.length -1));
     }
 
     /**************************************************************************
@@ -121,11 +121,12 @@ class CalcTVA {
             [0.055, 0, 0, 0],
             [0.021, 0, 0, 0]
         ];
-        this.showTotals();
         this.fldTTC.value = '';
         this.fldHT.value = '';
-        this.tva = 0;
+
+        this.showTotals();
         this.showTVA();
+
         document.querySelector('input[lastused]').select();
         document.querySelectorAll('.dTotal').forEach(total => total.remove());
         document.getElementById('sectDetails').style.display = 'none';
@@ -152,18 +153,19 @@ class CalcTVA {
     ** Displays the value of HT in the HT field
     **************************************************************************/
     showHT() {
-        this.calcHT();
-        this.fldHT.value = this.ht;
+        this.fldHT.value = this.calcHT();
     }
 
     /**************************************************************************
     ** showTotals()
-    ** Renders the totals of each array (creates the elements or updates them)
+    ** Shows the totals of each array (creates the elements or updates them)
     **************************************************************************/
     showTotals() {
         this.arrTotals.forEach(array => {
+            // if total division does not already exist
             if (!document.getElementById('dTotal'  + (array[0] * 1000).toString())) {
                 if (array[1] !== 0) {
+                    // if totals are not set
                     let div = document.createElement('div');
                     div.classList.add('dTotal');
                     div.id = 'dTotal' + (array[0] * 1000).toString();
@@ -195,6 +197,7 @@ class CalcTVA {
                     document.getElementById('dTotals').appendChild(div);
                 }
             }
+            // total division already exists
             else
             {
                 document.getElementById('dTotal'  + (array[0] * 1000).toString()).querySelector('.inputHT').value = array[1].toFixed(2) + '€';
@@ -210,8 +213,7 @@ class CalcTVA {
     ** Displays the value of TTC in the TTC field
     **************************************************************************/
     showTTC() {
-        this.calcTTC();
-        this.fldTTC.value = this.ttc;
+        this.fldTTC.value = this.calcTTC();
     }
 
     /**************************************************************************
@@ -219,8 +221,7 @@ class CalcTVA {
     ** Displays the value of TVA in the TVA field
     **************************************************************************/
     showTVA() {
-        this.calcTVA();
-        this.fldTVA.value = this.tva;
+        this.fldTVA.value = this.calcTVA();
     }
 
     /**************************************************************************
@@ -247,10 +248,9 @@ class CalcTVA {
             this.arrTotals[this.lastEntry[0]][3] -= this.lastEntry[3];
         }
 
-        if (bShow) this.showTotals();
-
+        if (bShow)
+            this.showTotals();
     }
-
 }
 
 
@@ -310,8 +310,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /******* Changes HT or TTC field whenever the other field changes *********/
     document.addEventListener('input', (event) => {
-        if (event.target === document.getElementById('fldHT')) calc.showTTC();
-        if (event.target === document.getElementById('fldTTC')) calc.showHT();
+        if (event.target === document.getElementById('fldHT'))
+            calc.showTTC();
+        if (event.target === document.getElementById('fldTTC'))
+            calc.showHT();
         calc.showTVA();
     });
 
@@ -324,5 +326,4 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sectDetails').style.display = 'flex';
         }
     });
-
 });

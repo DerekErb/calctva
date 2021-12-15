@@ -2,8 +2,6 @@
     <meta charset="utf-8">
 	<meta name="Viewport" content="width=device-width, initial-scale=1" />
 
-	<meta http-equiv="Content-Type" content="text/html; charset=iso-8559-1"/>
-
 	<meta name="description" content="__FULL-DESCRIPTION__"/>
 	<meta name="abstract" content="__FULL-ABSTRACT__"/>
 	<meta name="keywords" content="__KEYWORD, KEYWORD, KEYWORD, …_"/>
@@ -24,24 +22,25 @@
 	<meta name="Robots" content="all, index, follow" />
 	<meta name="Revisit-After" content="14 days" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="CalcTVA" />
-    <meta property="og:description" content="XXX SITE DESCRIPTION" />
-    <meta property="og:url" content="http://calctva.app" />
-    <meta property="og:site_name" content="CalcTVA" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="CalcTVA" />
+        <meta property="og:description" content="XXX SITE DESCRIPTION" />
+        <meta property="og:url" content="https://calctva.app" />
+        <meta property="og:site_name" content="Calc TVA" />
 
-    <meta property="og:locale" content="fr_FR" />
-    <meta property="og:locale:alternate" content="en_US" />
-    <meta property="og:locale:alternate" content="en_GB" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:locale:alternate" content="en_US" />
+        <meta property="og:locale:alternate" content="en_GB" />
 
     <link rel="canonical" href="http://pageURL" />
 
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:description" content="XXX DESCRIPTION" />
-    <meta name="twitter:title" content="XXX SITE NAME" />
+        <!-- Twitter -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:description" content="XXX DESCRIPTION" />
+        <meta name="twitter:title" content="XXX SITE NAME" />
 
     <!-- icons -->
+    <!--
     <meta property="og:image" content="http://des-dev/favicon-96x96.png" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="98" />
@@ -53,6 +52,7 @@
     <link rel = "icon" type = "image/png" sizes = "16x16" href = "/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    -->
 
     <meta name="HandheldFriendly" content="true" />
 	<meta name="MobileOptimized" content="320" />
@@ -68,53 +68,81 @@
 
     <header>
     </header>
+
     <main>
-        <section id="sectCalc">
-            <div id="dCalcWrap">
-                <div id="dCommands">
-                    <button id="btnUndo"></button>
-                    <button id="btnReset"></button>
-                </div>
+        <article id="artCalc">
+            <section id="sectCalc">
+                <div id="dCalcWrap">
+                    <div id="dCommands">
+                        <button id="btnUndo"></button>
+                        <button id="btnReset"></button>
+                    </div>
 
-                <div id="dHT" class="dCalc">
-                    <label for="fldHT">HT</label>
-                    <input type="number" inputmode="decimal" id="fldHT" autofocus aria-label="Champ Hors-Taxe">
-                </div>
+                    <div id="dHT" class="dCalc">
+                        <label for="fldHT">HT</label>
+                        <input type="number" inputmode="decimal" id="fldHT" autofocus aria-label="Champ Hors-Taxe">
+                    </div>
 
-                <div id="dTVA" class="dCalc">
-                    <label for="fldTVA">TVA</label>
-                    <input id="fldTVA" type="number" readonly aria-label="Montant TVA" aria-live="polite">
-                </div>
+                    <div id="dTVA" class="dCalc">
+                        <label for="fldTVA">TVA</label>
+                        <input id="fldTVA" type="number" readonly aria-label="Montant TVA" aria-live="polite">
+                    </div>
 
-                <div id="dTTC" class="dCalc">
-                    <label for="fldTTC">TTC</label>
-                    <input type="number" inputmode="decimal" id="fldTTC" aria-label="Champ TTC">
-                </div>
+                    <div id="dTTC" class="dCalc">
+                        <label for="fldTTC">TTC</label>
+                        <input type="number" inputmode="decimal" id="fldTTC" aria-label="Champ TTC">
+                    </div>
 
-                <div id="dBtns" class="dCalc">
-                    <button id="btn0" data-value="0.2" class="btnPerc active">20 %</button>
-                    <button id="btn1" data-value="0.1" class="btnPerc">10 %</button>
-                    <button id="btn2" data-value="0.055" class="btnPerc">5,5 %</button>
-                    <button id="btn3" data-value="0.021" class="btnPerc">2,1 %</button>
-                </div>
+                    <div id="dBtns" class="dCalc">
+                        <button id="btn0" data-value="0.2" class="btnPerc active">20 %</button>
+                        <button id="btn1" data-value="0.1" class="btnPerc">10 %</button>
+                        <button id="btn2" data-value="0.055" class="btnPerc">5,5 %</button>
+                        <button id="btn3" data-value="0.021" class="btnPerc">2,1 %</button>
+                    </div>
 
-                <div id="dAdd" class="dCalc">
-                    <button id="btnAdd">ENREGISTRER</button>
+                    <div id="dAdd" class="dCalc">
+                        <button id="btnAdd">ENREGISTRER</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-        <section id="sectDetails">
-            <h1>TOTAUX</h1>
-            <div id="dTits">
-                <h2>HT</h2>
-                <h2>TVA</h2>
-                <h2>TTC</h2>
-            </div>
-            <div id="dTotals"></div>
-        <!--    <div id="dDetails">
-                <h2>DÉTAILS</h2>
-            </div> -->
-        </section>
+            </section>
+
+            <section id="sectDetails">
+                <h1>TOTAUX</h1>
+                <div id="dTits">
+                    <h2>HT</h2>
+                    <h2>TVA</h2>
+                    <h2>TTC</h2>
+                </div>
+                <div id="dTotals"></div>
+            <!--    <div id="dDetails">
+                    <h2>DÉTAILS</h2>
+                </div> -->
+            </section>
+        </article>
+
+        <article id="artAbout">
+            <section id="sectAbout">
+                <h1>A propos de Calc TVA</h1>
+                <div>
+                    Calc TVA est ... ... ...
+                </div>
+                <div>
+                    Calc TVA est aussi ... ... ...
+                </div>
+            </section>
+
+            <section id="sectInstr">
+                <h2>Instructions</h2>
+                <div>
+                    Comment utiliser Calc TVA ...
+                </div>
+                <div>
+                    Aussi comment utiliser Calc TVA ...
+                </div>
+            </section>
+        </article>
+
     </main>
+
     <nav id="navMain">Navigation</nav>
 </body>
