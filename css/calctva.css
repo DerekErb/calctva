@@ -1,7 +1,6 @@
 /*********************************************************************
  *
  *  CalcTVA
- *  Version 1.0
  *
  *  Created by Derek Erb Solutions ( https://derekerb.solutions)
  *  JavaScript programming and CSS styling by
@@ -14,7 +13,7 @@
  *
  *  GENERAL
  *
- ********************************************************************/
+*********************************************************************/
 
 :root {
     --MainBack: #2E2828;
@@ -28,7 +27,6 @@
     --TxtColor: white;
 
     --Active : #01BB16;
-
 
     --FontMain: 'Roboto', garmond, times, serif;
 }
@@ -46,12 +44,16 @@ body {
     font-family: var(--FontMain);
 }
 
-@media screen and (min-width: 1000px) {
-    body {
-        width: 50%;
-        margin: 0 auto;
+    /*********************************************************************
+     *  Bigger than small tablet
+    *********************************************************************/
+
+    @media screen and (min-width: 1000px) {
+        body {
+            width: 50%;
+            margin: 0 auto;
+        }
     }
-}
 
 img, svg {
     max-width: 100%;
@@ -81,7 +83,7 @@ input:read-only {
 
 /*********************************************************************
  *
- *  HEADER
+ *  HEADER (PUB)
  *
  ********************************************************************/
 
@@ -89,6 +91,7 @@ header {
     width: 100%;
 }
 
+/*
 #btnSettings, #btnThemeSwitch {
     border: none;
     width: 50px;
@@ -113,6 +116,7 @@ header {
     justify-content: end;
     align-items: center;
 }
+*/
 
 /*********************************************************************
  *
@@ -176,13 +180,17 @@ header {
     position: absolute;
     border-radius: 5px;
     z-index: -1;
-    left: 0;
-    width: calc(100% /2);
+    left: 1%;
+    width: calc(98% /2);
     height: 85%;
     background-color: rgba(149, 165, 166, 0.2);
     transition: transform 0.3s;
     pointer-events: none;
 }
+
+    /*********************************************************************
+     *  Bigger than small tablet
+    *********************************************************************/
 
     @media screen and (min-width: 1000px) {
         #navMain {
@@ -201,7 +209,7 @@ header {
 
 /*********************************************************************
  *
- *  ARTICLES
+ *  ARTICLES (PAGES)
  *
  ********************************************************************/
 
@@ -234,7 +242,7 @@ article.inactive {
 
 /*********************************************************************
  *
- *  CALCULATOR
+ *  CALCULATOR PAGE
  *
  ********************************************************************/
 
@@ -265,14 +273,7 @@ article.inactive {
     letter-spacing: 0.05em;
 }
 
-.dCalc .copy {
-    background-color: var(--BtnBack-4);
-    padding: 0.3em 0.4em;
-}
-
-
-
-.dCalc input, .dCalc button {
+.dCalc button, .dCalc input {
     border: none;
     border-radius: 5px;
     box-shadow: 2px 2px 4px black, inset -2px -2px 3px rgba(0,0,0,0.5);
@@ -397,6 +398,9 @@ input::-webkit-inner-spin-button {
     padding: 0.5em 2.5em;
 }
 
+    /*********************************************************************
+     *  Bigger than smartphone
+    *********************************************************************/
 
     @media screen and (min-width: 500px) {
         .dCalc {
@@ -415,11 +419,11 @@ input::-webkit-inner-spin-button {
 
 /*********************************************************************
  *
- *  DETAILS
+ *  CALC TOTALS
  *
  ********************************************************************/
 
-#sectDetails {
+#sectTotals {
     width: 90%;
     text-align: center;
     display: none;
@@ -427,12 +431,12 @@ input::-webkit-inner-spin-button {
     margin-bottom: 4%;
 }
 
-#sectDetails h1 {
+#sectTotals h1 {
     font-size: 1.5em;
     margin: 2% auto 0 auto;
 }
 
-#sectDetails h2 {
+#sectTotals h2 {
     margin: 3% auto;
     font-size: 1.3em;
 }
@@ -479,7 +483,6 @@ input::-webkit-inner-spin-button {
     border: none;
 }
 
-
 .dTotal .lblRate {
     width: 100%;
     text-align: right;
@@ -489,8 +492,6 @@ input::-webkit-inner-spin-button {
     font-size: 1em;
     padding-right: 75%;
 }
-
-
 
 #dTotals {
     border: 1px solid grey;
@@ -514,6 +515,10 @@ input::-webkit-inner-spin-button {
 }
 
 
+    /*********************************************************************
+     *  Bigger than smartphone
+    *********************************************************************/
+
     @media screen and (min-width: 500px) {
             .dTotal input, .dEntry p {
                 margin-right: 7%;
@@ -523,6 +528,10 @@ input::-webkit-inner-spin-button {
                 padding-right: 85%;
             }
         }
+
+    /*********************************************************************
+     *  Bigger than small tablet
+    *********************************************************************/
 
     @media screen and (min-width: 1000px) {
 
@@ -540,16 +549,6 @@ input::-webkit-inner-spin-button {
             }
         }
 
-
-/********************/
-
-#successMessage {
-    display: flex;
-    opacity: 0;
-    color: var(--TxtColor);
-    animation: fadeInAndOut 3s forwards;
-    text-align: center;
-}
 
 /*********************************************************************
  *

@@ -51,7 +51,7 @@ class CalcTVA {
 
     /**************************************************************************************
     ** addEntryHTML()
-    ** Creates all the HTML elements of the last entry and inserts them in #sectDetails
+    ** Creates all the HTML elements of the last entry and inserts them in #sectTotals
     ***************************************************************************************/
     /*addEntryHTML() {
         let div = document.createElement('div');
@@ -134,7 +134,7 @@ class CalcTVA {
         });
         document.getElementById('btn0').classList.add('active');
         this.fldHT.select();
-        document.getElementById('sectDetails').style.display = 'none';
+        document.getElementById('sectTotals').style.display = 'none';
     }
 
     /**************************************************************************
@@ -177,25 +177,25 @@ class CalcTVA {
                     div.id = 'dTotal' + (array[0] * 1000).toString();
                     let lblRate = document.createElement('label');
                     lblRate.classList.add('lblRate');
-                    lblRate.innerHTML = (array[0] * 100).toFixed(2) + ' %';
+                    lblRate.innerHTML = (array[0] * 100).toFixed(2) + '&nbsp;%';
                     lblRate.setAttribute('for', 'inputTVA' + (array[0] * 100).toString());
-                    lblRate.setAttribute('aria-label', 'Totaux' + (array[0] * 100).toString() + '%');
+                    lblRate.setAttribute('aria-label', 'Totaux' + (array[0] * 100).toString() + ' %');
                     let input1 = document.createElement('input');
                     input1.classList.add('inputHT');
                     input1.setAttribute('readonly', '');
-                    input1.setAttribute('aria-label', 'Total Hors-Taxe' + (array[0] * 100).toString() + '%');
-                    input1.value = (array[1]).toFixed(2) + '€';
+                    input1.setAttribute('aria-label', 'Total Hors-Taxe' + (array[0] * 100).toString() + ' %');
+                    input1.value = (array[1]).toFixed(2) + ' €';
                     let input2 = document.createElement('input');
                     input2.classList.add('inputTVA');
                     input2.id = 'inputTVA' + (array[0] * 100).toString();
                     input2.setAttribute('readonly', '');
-                    input2.setAttribute('aria-label', 'Total TVA' + (array[0] * 100).toString() + '%');
-                    input2.value = array[2].toFixed(2) + '€';
+                    input2.setAttribute('aria-label', 'Total TVA' + (array[0] * 100).toString() + ' %');
+                    input2.value = array[2].toFixed(2) + ' €';
                     let input3 = document.createElement('input');
                     input3.classList.add('inputTTC');
                     input3.setAttribute('readonly', '');
-                    input3.setAttribute('aria-label', 'Total TTC' + (array[0] * 100).toString() + '%');
-                    input3.value = array[3].toFixed(2) + '€';
+                    input3.setAttribute('aria-label', 'Total TTC' + (array[0] * 100).toString() + ' %');
+                    input3.value = array[3].toFixed(2) + ' €';
                     div.appendChild(lblRate);
                     div.appendChild(input1);
                     div.appendChild(input2);
@@ -259,7 +259,10 @@ class CalcTVA {
 }
 
 
-/******* Events to trigger once the DOM is loaded ********/
+/*************************************************************************
+ ** EVENT LISTENERS
+ ** Events to trigger once the DOM is loaded
+*************************************************************************/
 document.addEventListener('DOMContentLoaded', () => {
 
     // Create calc class instance
@@ -286,12 +289,12 @@ document.addEventListener('DOMContentLoaded', () => {
             calc.showTVA();
         }
 
-        /******** Creates an entry, calculates and renders the totals, and shows sectDetails if it's hidden *********/
+        /******** Creates an entry, calculates and renders the totals, and shows sectTotals if it's hidden *********/
         if (event.target === document.getElementById('btnAdd') && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
             document.querySelector('input[lastused]').select();
             calc.showTotals();
-            document.getElementById('sectDetails').style.display = 'flex';
+            document.getElementById('sectTotals').style.display = 'flex';
         }
 
         /****** Undo function *****/
@@ -300,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
         /****** Reset function *****/
         if (event.target === document.getElementById('btnReset')) {
              calc.reset();
-            document.getElementById('sectDetails').style.display = 'none';
+            document.getElementById('sectTotals').style.display = 'none';
         }
 
 
@@ -310,14 +313,15 @@ document.addEventListener('DOMContentLoaded', () => {
                  button.classList.remove('active');
             })
             event.target.classList.add('active');
-            console.log(event.target.dataset.index);
             document.getElementById('navCursor').style.transform = `translateX(${100 * event.target.dataset.index}%)`;
             document.querySelectorAll('article').forEach((article, index) => {
-                article.classList.remove('active');
-                article.classList.add('inactive');
                 if (index === parseInt(event.target.dataset.index)) {
                     article.classList.remove('inactive');
                     article.classList.add('active');
+                }
+                else {
+                    article.classList.remove('active');
+                    article.classList.add('inactive');
                 }
             })
         }
@@ -351,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
             calc.addEntry();
             document.querySelector('input[lastused]').select();
             calc.showTotals();
-            document.getElementById('sectDetails').style.display = 'flex';
+            document.getElementById('sectTotals').style.display = 'flex';
         }
     });
 });
