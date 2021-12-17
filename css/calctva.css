@@ -283,6 +283,8 @@ article.inactive {
 .dCalc input {
     text-align: right;
     padding: 0.4em 0.5em 0.4em 0.4em;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
 }
 
 .dCalc input:focus, .dCalc button:focus, .dCalc input:active, .dCalc button:active {
