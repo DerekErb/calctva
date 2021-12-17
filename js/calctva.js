@@ -226,12 +226,15 @@ class CalcTVA {
     ** Updates the totals by substracting lastEntry to totals
     **************************************************************************/
     undo() {
-        this.updateTotals(false);
-        this.fldTTC.value = '';
-        this.fldHT.value = '';
-        this.showTVA();
-        // Return to last selected field
-        document.querySelector('input[lastused]').select();
+        // disable undo function if nothing has been added
+        if (this.lastEntry[1]) {
+            this.updateTotals(false);
+            this.fldTTC.value = '';
+            this.fldHT.value = '';
+            this.showTVA();
+            // Return to last selected field
+            document.querySelector('input[lastused]').select();
+        }
     }
 
     /**************************************************************
@@ -299,6 +302,26 @@ document.addEventListener('DOMContentLoaded', () => {
              calc.reset();
             document.getElementById('sectDetails').style.display = 'none';
         }
+
+
+        /******** NAVBAR FUNCTIONS ********/
+        if (event.target.classList.contains('btnNav')) {
+            document.querySelectorAll('.btnNav').forEach(button => {
+                 button.classList.remove('active');
+            })
+            event.target.classList.add('active');
+            console.log(event.target.dataset.index);
+            document.getElementById('navCursor').style.transform = `translateX(${100 * event.target.dataset.index}%)`;
+            document.querySelectorAll('article').forEach((article, index) => {
+                article.classList.remove('active');
+                article.classList.add('inactive');
+                if (index === parseInt(event.target.dataset.index)) {
+                    article.classList.remove('inactive');
+                    article.classList.add('active');
+                }
+            })
+        }
+
     });
 
     /****** Adds 'lastused' attribute when input is focused and remove previous one *******/

@@ -9,6 +9,13 @@
  *
  ********************************************************************/
 
+
+/*********************************************************************
+ *
+ *  GENERAL
+ *
+ ********************************************************************/
+
 :root {
     --MainBack: #2E2828;
 
@@ -19,6 +26,8 @@
     --BtnBack-4: #0876c2;
     --BtnSecBack: #01BB16;
     --TxtColor: white;
+
+    --Active : #01BB16;
 
 
     --FontMain: 'Roboto', garmond, times, serif;
@@ -37,6 +46,17 @@ body {
     font-family: var(--FontMain);
 }
 
+@media screen and (min-width: 1000px) {
+    body {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+
+img, svg {
+    max-width: 100%;
+}
+
 main {
     width: 100%;
     display: flex;
@@ -44,14 +64,7 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
-}
-
-article {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow-x: hidden;
 }
 
 button:hover {
@@ -64,21 +77,13 @@ input:read-only {
     box-shadow: none;
 }
 
-#navMain {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    color: var(--MainBack);
-    height: 55px;
-    width: 100%;
-    background-color: #01BB16;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
 
-/*************** HEADER ********************/
+
+/*********************************************************************
+ *
+ *  HEADER
+ *
+ ********************************************************************/
 
 header {
     width: 100%;
@@ -111,7 +116,125 @@ header {
 
 /*********************************************************************
  *
- *  Calculator
+ *  NAV
+ *
+ ********************************************************************/
+
+#navMain {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--MainBack);
+    height: 55px;
+    width: 100%;
+    background-color: var(--MainBack);
+    position: sticky;
+    bottom: 0;
+    box-shadow: 0px 1px 2px grey;
+}
+
+#navMain button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    appearance: none;
+    margin: 2%;
+    width: calc(100% / 2);
+    height: 80%;
+    border: none;
+    background-color: transparent;
+    font-size: 0.7em;
+    color: var(--TxtColor);
+}
+
+#navMain button.active {
+    color: var(--Active);
+    transition: color 0.3s;
+}
+
+#navMain button svg {
+    fill: var(--TxtColor);
+    pointer-events: none;
+}
+
+#navMain button.active svg {
+    fill: var(--Active);
+    transition: fill 0.3s;
+}
+
+#navMain button .svgActive, #navMain button.active .svgInactive {
+    display: none
+}
+
+#navMain button .svgInactive, #navMain button.active .svgActive {
+    display: flex;
+}
+
+#navCursor {
+    position: absolute;
+    border-radius: 5px;
+    z-index: -1;
+    left: 0;
+    width: calc(100% /2);
+    height: 85%;
+    background-color: rgba(149, 165, 166, 0.2);
+    transition: transform 0.3s;
+    pointer-events: none;
+}
+
+    @media screen and (min-width: 1000px) {
+        #navMain {
+            box-shadow: none;
+        }
+
+        #navMain button {
+            height: 100%;
+            font-size: 1em;
+        }
+
+        #navCursor {
+            height: 120%;
+        }
+    }
+
+/*********************************************************************
+ *
+ *  ARTICLES
+ *
+ ********************************************************************/
+
+article {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    min-height: 100vh;
+    margin-top: 70px;
+}
+
+article.active {
+    display: flex;
+    animation: fadeIn 0.3s forwards;
+}
+
+article.inactive {
+    animation: fadeOut 0.3s forwards;
+}
+
+#artCalc.active {
+    animation: fadeIn 0.3s forwards, moveRight 0.5s forwards;
+}
+
+#artAbout.active {
+    animation: fadeIn 0.3s forwards, moveLeft 0.5s forwards;
+}
+
+/*********************************************************************
+ *
+ *  CALCULATOR
  *
  ********************************************************************/
 
@@ -121,14 +244,6 @@ header {
     justify-content: center;
     align-items: center;
     width: 90%;
-    margin-top: 70px;
-}
-
-@media screen and (min-width: 1000px) {
-    main {
-        width: 50%;
-        margin: 4% auto;
-    }
 }
 
 #dCalcWrap {
@@ -155,16 +270,7 @@ header {
     padding: 0.3em 0.4em;
 }
 
-    @media screen and (min-width: 500px) {
-        .dCalc {
-            justify-content: end;
-            width: 90%;
-        }
 
-        .dCalc input, .dCalc .copy {
-            padding: 0.5em;
-        }
-    }
 
 .dCalc input, .dCalc button {
     border: none;
@@ -291,9 +397,25 @@ input::-webkit-inner-spin-button {
     padding: 0.5em 2.5em;
 }
 
+
+    @media screen and (min-width: 500px) {
+        .dCalc {
+            justify-content: center;
+            width: 90%;
+        }
+
+        .dCalc label {
+            margin-right: 4%;
+        }
+
+        #dTVA {
+            width: 90%
+        }
+    }
+
 /*********************************************************************
  *
- *  History Entries
+ *  DETAILS
  *
  ********************************************************************/
 
@@ -368,18 +490,7 @@ input::-webkit-inner-spin-button {
     padding-right: 75%;
 }
 
-    @media screen and (min-width: 500px) {
-            .dTotal input, .dEntry p {
-                margin-right: 7%;
-                width: 22%;
-            }
-        }
 
-    @media screen and (min-width: 1900px) {
-            .dTotal input, .dEntry p {
-                margin-right: 13.5%;
-            }
-        }
 
 #dTotals {
     border: 1px solid grey;
@@ -403,6 +514,33 @@ input::-webkit-inner-spin-button {
 }
 
 
+    @media screen and (min-width: 500px) {
+            .dTotal input, .dEntry p {
+                margin-right: 7%;
+                width: 22%;
+            }
+            .dTotal .lblRate {
+                padding-right: 85%;
+            }
+        }
+
+    @media screen and (min-width: 1000px) {
+
+            .dTotal {
+                padding: 0 2% 1% 0;
+            }
+            .dTotal .lblRate {
+                padding-right: 90%;
+                margin: 1% 0 1% 5%;
+            }
+
+            .dTotal input, .dEntry p {
+                margin-right: 12%;
+                width: 20%;
+            }
+        }
+
+
 /********************/
 
 #successMessage {
@@ -412,6 +550,12 @@ input::-webkit-inner-spin-button {
     animation: fadeInAndOut 3s forwards;
     text-align: center;
 }
+
+/*********************************************************************
+ *
+ *  KEYFRAMES
+ *
+ ********************************************************************/
 
 @keyframes fadeInAndOut {
     0% {
@@ -426,3 +570,40 @@ input::-webkit-inner-spin-button {
     }
 }
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        display: flex;
+    }
+}
+
+@keyframes moveRight {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes moveLeft {
+    0% {
+        transform: translateX(50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
