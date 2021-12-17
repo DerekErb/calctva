@@ -398,6 +398,7 @@ input::-webkit-inner-spin-button {
 #dAdd button {
     background-color: var(--BtnSecBack);
     padding: 0.5em 2.5em;
+    color: var(--MainBack);
 }
 
     /*********************************************************************
