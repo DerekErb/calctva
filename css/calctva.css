@@ -480,10 +480,10 @@ input::-webkit-inner-spin-button {
 }
 
 .dTotal input {
-    width: 30%;
+    width: 33%;
     text-align: right;
-    font-size: 1.2em;
     border: none;
+    font-size: 1em;
 }
 
 .dTotal .lblRate {
@@ -526,6 +526,7 @@ input::-webkit-inner-spin-button {
             .dTotal input, .dEntry p {
                 margin-right: 7%;
                 width: 22%;
+                font-size: 1.2em;
             }
             .dTotal .lblRate {
                 padding-right: 85%;
@@ -584,11 +585,11 @@ input::-webkit-inner-spin-button {
 
 @keyframes fadeIn {
     0% {
+        display: flex;
         opacity: 0;
     }
     100% {
         opacity: 1;
-        display: flex;
     }
 }
 
