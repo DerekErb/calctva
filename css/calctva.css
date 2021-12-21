@@ -21,15 +21,10 @@
     --BtnBack-2: #065993;
     --BtnBack-3: #0267ab;
     --BtnBack-4: #0876c2;
-/*
-    --BtnSecBack: #01BB16;
- */
     --BtnSecBack: #C04A0A;
 
     --TxtColor: white;
-/*
-    --Active : #01BB16;
-*/
+
     --Active: #5DC0FFFF;
 
     --FontMain: 'Roboto', garmond, times, serif;
