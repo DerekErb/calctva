@@ -40,6 +40,10 @@
     src: url("/fonts/roboto-regular.ttf");
 }
 
+* {
+    box-sizing: border-box;
+}
+
 
 body {
     background: var(--MainBack);
@@ -95,6 +99,7 @@ header {
     border: 1px solid white;
     text-align: center;
     width: 100%;
+    height: 50px;
 }
 
 /*
@@ -136,12 +141,12 @@ header {
     justify-content: center;
     align-items: center;
     color: var(--MainBack);
-    height: 55px;
+    height: 70px;
     width: 100%;
     background-color: var(--MainBack);
     position: sticky;
     bottom: 0;
-    box-shadow: 0px 1px 2px grey;
+    box-shadow: -3px 1px 2px grey;
 }
 
 #navMain button {
@@ -152,11 +157,12 @@ header {
     appearance: none;
     margin: 2%;
     width: calc(100% / 2);
-    height: 80%;
+    height: 75%;
     border: none;
     background-color: transparent;
     font-size: 0.7em;
     color: var(--TxtColor);
+    padding: 0.5em 0;
 }
 
 #navMain button.active {
@@ -182,16 +188,19 @@ header {
     display: flex;
 }
 
-#navCursor {
+#navActiveIndicator {
     position: absolute;
     border-radius: 5px;
     z-index: -1;
     left: 1%;
     width: calc(98% /2);
     height: 85%;
-    background-color: rgba(149, 165, 166, 0.2);
+    /*background-color: rgba(149, 165, 166, 0.2);*/
+    /*background-color: var(--MainBack);*/
     transition: transform 0.3s;
     pointer-events: none;
+    box-shadow: 0px 0px 3px var(--Active);
+    background: linear-gradient(0deg, rgba(0,0,0,0.2), transparent);
 }
 
     /*********************************************************************
@@ -208,7 +217,7 @@ header {
             font-size: 1em;
         }
 
-        #navCursor {
+        #navActiveIndicator {
             height: 120%;
         }
     }
@@ -226,7 +235,7 @@ article {
     display: none;
     opacity: 0;
     min-height: 100vh;
-    margin-top: 70px;
+    margin-top: 10px;
 }
 
 article.active {
@@ -559,6 +568,68 @@ input::-webkit-inner-spin-button {
             }
         }
 
+
+
+/*********************************************************************
+ *
+ *  ABOUT PAGE
+ *
+ ********************************************************************/
+
+#artAbout h2, #artAbout h3 {
+    text-align: center;
+}
+
+#artAbout h3 {
+    margin-bottom: 0;
+}
+
+#sectAbout, #sectInstr {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+
+#sectInstr img {
+    max-width: 2em;
+    max-height: 2em;
+    transform: translateY(30%);
+}
+
+#sectInstr ul {
+    padding-inline-start: 0;
+    padding: 0.5em;
+    margin-top: 0;
+}
+
+#sectInstr ul li {
+    line-height: 1.4em;
+    margin: 4% auto;
+    list-style: none;
+}
+
+#sectInstr li:before {
+  content: "#️⃣";
+  margin: 0 4px 0 0;
+}
+
+#sectInfoFooter {
+    margin-bottom: 4%;
+}
+
+#sectInfoFooter a {
+    color: var(--Active);
+}
+
+#sectInfoFooter div {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.3em;
+}
 
 /*********************************************************************
  *

@@ -291,7 +291,10 @@ document.addEventListener('DOMContentLoaded', () => {
         /******** Creates an entry, calculates and renders the totals, and shows sectTotals if it's hidden *********/
         if (event.target === document.getElementById('btnAdd') && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
-            document.querySelector('input[lastused]').select();
+            // If on mobile, no automatic input select
+            if (window.matchMedia("(min-width: 500px)").matches) {
+                document.querySelector('input[lastused]').select();
+            }
             calc.showTotals();
             document.getElementById('sectTotals').style.display = 'flex';
         }
@@ -312,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  button.classList.remove('active');
             })
             event.target.classList.add('active');
-            document.getElementById('navCursor').style.transform = `translateX(${100 * event.target.dataset.index}%)`;
+            document.getElementById('navActiveIndicator').style.transform = `translateX(${100 * event.target.dataset.index}%)`;
             document.querySelectorAll('article').forEach((article, index) => {
                 if (index === parseInt(event.target.dataset.index)) {
                     article.classList.remove('inactive');
@@ -352,7 +355,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
-            document.querySelector('input[lastused]').select();
+            // If on mobile, no automatic input select
+            if (window.matchMedia("(min-width: 500px)").matches) {
+                document.querySelector('input[lastused]').select();
+            }
             calc.showTotals();
             document.getElementById('sectTotals').style.display = 'flex';
         }

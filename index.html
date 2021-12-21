@@ -131,22 +131,38 @@
         <article id="artAbout">
             <section id="sectAbout">
                 <h1>Calc TVA</h1>
-                <div>
-                    Calc TVA est ... ... ...
-                </div>
-                <div>
-                    Calc TVA est aussi ... ... ...
-                </div>
+                <p>
+                    Calc TVA est un outil de calcul de TVA française, pour les particuliers comme les professionnels.<br>
+                    Son utilisation est gratuite et ne demande l'accès à aucune donnée personnelle.
+                </p>
+                <p>
+                    Calc TVA est une application modeste, sans vocation lucrative réelle, mais qui engendre néanmoins des coûts.<br>
+                    C'est pour cette raison qu'un bandeau publicitaire, que nous avons souhaité le moins invasif possible, est présent en haut de l'écran.
+                </p>
             </section>
 
             <section id="sectInstr">
                 <h2>Instructions</h2>
-                <div>
-                    Comment utiliser Calc TVA ...
-                </div>
-                <div>
-                    Aussi comment utiliser Calc TVA ...
-                </div>
+                <h3>
+                    Comment utiliser Calc TVA ?
+                </h3>
+                <ul>
+                    <li>Vous pouvez entrer des nombres dans le champ HT (Hors-Taxe) ou dans le champ TTC (Toutes Taxes Comprises).<br>
+                        Les deux champs sont connectés et calculent en temps réel la valeur de l'autre.
+                    </li>
+                    <li>Dans le champ TVA vous trouverez la différence entre le TTC et le HT.
+                    </li>
+                    <li>Lorsque vous appuyez sur "Enregistrer" (ou sur la touche "Entrée" d'un clavier), les montants affichés dans les champs HT, TVA et TTC sont ajoutés au total du taux sélectionné.
+                    </li>
+                    <li>
+                        Le bouton "Annuler" ( <img src="/imgs/undo.svg" alt="Image bouton annuler">) vous permet d'annuler la dernière opération enregistrée.
+                    </li>
+                    <li>
+                        Le bouton "Recommencer" ( <img src="/imgs/reset.svg" alt="Image bouton reset">) vous permet de réinitialiser l'interface et les données saisies.
+                    </li>
+                    <li>En bas de l'écran se trouve la navigation, vous permettant de changer de page.
+                    </li>
+                </ul>
             </section>
 
             <section id="sectInfoFooter">
@@ -333,7 +349,7 @@
 </svg>
             Info
         </button>
-        <div id="navCursor"></div>
+        <div id="navActiveIndicator"></div>
     </nav>
 
 </body>
