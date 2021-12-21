@@ -8,7 +8,6 @@
  *
  ********************************************************************/
 
-
 /*********************************************************************
  *
  *  GENERAL
@@ -18,15 +17,20 @@
 :root {
     --MainBack: #2E2828;
 
-
     --BtnBack-1: #043354;
     --BtnBack-2: #065993;
     --BtnBack-3: #0267ab;
     --BtnBack-4: #0876c2;
+/*
     --BtnSecBack: #01BB16;
-    --TxtColor: white;
+ */
+    --BtnSecBack: #C04A0A;
 
+    --TxtColor: white;
+/*
     --Active : #01BB16;
+*/
+    --Active: #5DC0FFFF;
 
     --FontMain: 'Roboto', garmond, times, serif;
 }
@@ -88,6 +92,8 @@ input:read-only {
  ********************************************************************/
 
 header {
+    border: 1px solid white;
+    text-align: center;
     width: 100%;
 }
 
@@ -398,7 +404,7 @@ input::-webkit-inner-spin-button {
 #dAdd button {
     background-color: var(--BtnSecBack);
     padding: 0.5em 2.5em;
-    color: var(--MainBack);
+    color: var(--TxtColor);
 }
 
     /*********************************************************************

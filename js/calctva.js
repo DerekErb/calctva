@@ -1,7 +1,6 @@
 /*********************************************************************
  *
  *  CalcTVA
- *  Version 1.0
  *
  *  Created by Derek Erb Solutions ( https://derekerb.solutions)
  *  JavaScript programming and CSS styling by
