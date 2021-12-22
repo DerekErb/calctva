@@ -364,3 +364,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+/*************************************************************************
+ ** PWA INSTALL EVENT LISTENER
+ *************************************************************************/
+/*
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Prevent Chrome < 67 from automatically showing the prompt
+    e.preventDefault();
+    // Stash teh event for future trigger
+    deferredPrompt = e;
+    // Prompt to install as app
+    btnAdd.style.display = 'block';
+});
+
+btnAdd.addEventListener('click', (e) => {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+        }
+        deferredPrompt = null;
+    });
+});
+
+window.addEventListener('appinstalled', (evt) => {
+    app.logEvent('a2hs', 'installed');
+});
+*/

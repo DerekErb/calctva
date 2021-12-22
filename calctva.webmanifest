@@ -1,5 +1,6 @@
 {
     "background_color": "#2E2828",
+    "theme_color":      "#2E2828",
     "dir":              "ltr",
     "lang":             "fr",
     "scope":            "/",
