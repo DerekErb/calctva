@@ -97,18 +97,18 @@
     -
     -------------------------------------------------------------------- -->
     <header>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5661984403716952"
-                crossorigin="anonymous"></script>
-        <!-- Responsive Test -->
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-5661984403716952"
-             data-ad-slot="8479386595"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+<!--        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5661984403716952"-->
+<!--                crossorigin="anonymous"></script>-->
+<!--        &lt;!&ndash; Responsive Test &ndash;&gt;-->
+<!--        <ins class="adsbygoogle"-->
+<!--             style="display:block"-->
+<!--             data-ad-client="ca-pub-5661984403716952"-->
+<!--             data-ad-slot="8479386595"-->
+<!--             data-ad-format="auto"-->
+<!--             data-full-width-responsive="true"></ins>-->
+<!--        <script>-->
+<!--            (adsbygoogle = window.adsbygoogle || []).push({});-->
+<!--        </script>-->
     </header>
 
     <main>
@@ -131,12 +131,12 @@
                     </div>
 
                     <div id="dTVA" class="dCalc">
-                        <label for="fldTVA">TVA</label>
+                        <label for="fldTVA">+ TVA</label>
                         <input id="fldTVA" type="number" readonly aria-label="Montant TVA" aria-live="polite">
                     </div>
 
                     <div id="dTTC" class="dCalc">
-                        <label for="fldTTC">TTC</label>
+                        <label for="fldTTC">= TTC</label>
                         <input type="number" inputmode="decimal" id="fldTTC" aria-label="Champ TTC">
                     </div>
 
@@ -192,31 +192,34 @@
                     Comment utiliser Calc TVA ?
                 </h3>
                 <ul>
-                    <li>Vous pouvez entrer des nombres dans le champ HT (Hors-Taxe) ou dans le champ TTC (Toutes Taxes Comprises).<br>
-                        Les deux champs sont connectés et calculent en temps réel la valeur de l'autre.
-                    </li>
-                    <li>Dans le champ TVA vous trouverez la différence entre le TTC et le HT.
-                    </li>
-                    <li>Lorsque vous appuyez sur "Enregistrer" (ou sur la touche "Entrée" d'un clavier), les montants affichés dans les champs HT, TVA et TTC sont ajoutés au total du taux sélectionné.
+                    <li>
+                        Vous pouvez entrer des nombres dans le champ HT (Hors-Taxe) ou dans le champ TTC (Toutes Taxes Comprises).
                     </li>
                     <li>
-                        Le bouton "Annuler" ( <img src="/imgs/undo.svg" alt="Image bouton annuler">) vous permet d'annuler la dernière opération enregistrée.
+                        Les montants des autres champs sont calculées et affichées en même temps que vous saisissez.
                     </li>
                     <li>
-                        Le bouton "Recommencer" ( <img src="/imgs/reset.svg" alt="Image bouton reset">) vous permet de réinitialiser l'interface et les données saisies.
+                        Lorsque vous appuyez sur <span class="spKey">"Enregistrer"</span> (ou sur la touche <span class="spKey">"Entrée"</span> d'un clavier), les montants affichés dans les champs HT, TVA et TTC sont ajoutés au total du taux sélectionné.
                     </li>
-                    <li>En bas de l'écran se trouve la navigation, vous permettant de changer de page.
+                    <li>
+                        Le bouton <span class="spKey">"Annuler"</span> ( <img src="/imgs/undo.svg" alt="Image bouton annuler">) vous permet d'annuler et retirer la dernière opération enregistrée.
+                    </li>
+                    <li>
+                        Le bouton <span class="spKey">"Recommencer"</span> ( <img src="/imgs/reset.svg" alt="Image bouton reset">) vous permet de remettre à zéro les montants saisis.
+                    </li>
+                    <li>
+                        En bas de l'écran vous trouverez des boutons vous permettant de changer de page.
                     </li>
                 </ul>
             </section>
 
             <section id="sectInfoFooter">
                 <h2>Info</h2>
-                <div>
+                <p>
                     Calc TVA &copy; 2021 <a rel="external noopener" href="https://derekerb.solutions" title="Derek Erb Solutions Web Site">Derek Erb Solutions</a>.<br>
-                    Version 0.9.0.1<br>
+                    Version 0.9.0.1a<br>
                     <a href="mailto:info@derekerb.solutions">info@derekerb.solutions</a><br>
-                </div>
+                </p>
             </section>
         </article>
 
