@@ -257,7 +257,6 @@ class CalcTVA {
     }
 }
 
-
 /*************************************************************************
  ** EVENT LISTENERS
  ** Events to trigger once the DOM is loaded
@@ -366,30 +365,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*************************************************************************
- ** PWA INSTALL EVENT LISTENER
+ ** SERVICE WORKER registration
  *************************************************************************/
-/*
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent Chrome < 67 from automatically showing the prompt
-    e.preventDefault();
-    // Stash teh event for future trigger
-    deferredPrompt = e;
-    // Prompt to install as app
-    btnAdd.style.display = 'block';
-});
-
-btnAdd.addEventListener('click', (e) => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === 'accepted') {
-            console.log('User accepted the A2HS prompt');
-        }
-        deferredPrompt = null;
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/calctvasw.js').then(reg => {
+            console.log('DEBUG: Registered!', reg);
+        }).catch(err => {
+            console.log('DEBUG: Registration failed: ', err);
+        });
     });
-});
-
-window.addEventListener('appinstalled', (evt) => {
-    app.logEvent('a2hs', 'installed');
-});
-*/
+}

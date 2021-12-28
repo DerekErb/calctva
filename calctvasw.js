@@ -16,12 +16,12 @@ self.addEventListener('install', (event) => {
         caches.open(cacheName).then((cache) => {
             return cache.addAll([
                 '/',
-                'index.html',
+                '/index.html',
                 '/css/calctva.css',
                 '/css/normalise.css',
                 '/fonts/roboto-regular.ttf',
                 '/imgs/calc-empty-black.svg',
-                '/imgs/calc-full-back.svg',
+                '/imgs/calc-full-black.svg',
                 '/imgs/moon.svg',
                 '/imgs/question-empty-black.svg',
                 '/imgs/question-full-black.svg',
@@ -33,15 +33,17 @@ self.addEventListener('install', (event) => {
     );
 });
 
-self.addEventListener('activate', event => {
-    console.log('DEBUG: Activate event!');
-});
-
 self.addEventListener('fetch', event => {
     // Get asset from the cache
     event.respondWith(caches.match(event.request).then(cachedResponse => {
             return cachedResponse || fetch(event.request);
         })
     );
-    console.log('DEBUG: Fetch intercepted for:', event.request.url);
+    console.log('DEBUG: Fetched: ', event.request);
+    console.log('DEBUG: Fetch intercepted for: ', event.request.url);
 });
+
+self.addEventListener('activate', event => {
+    console.log('DEBUG: Activate event!');
+});
+

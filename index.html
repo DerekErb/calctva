@@ -75,24 +75,6 @@
 <body>
     <!-- ---------------------------------------------------------------
     -
-    - SERVICE WORKER
-    -
-    -------------------------------------------------------------------- -->
-    <script>
-        // Register the Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/calctvasw.js').then(reg=> {
-                        console.log('DEBUG: Registered!', reg);
-                    }).catch(err => {
-                        console.log('DEBUG: Registration failed: ', err);
-                    });
-                });
-        }
-    </script>
-
-    <!-- ---------------------------------------------------------------
-    -
     - PUB
     -
     -------------------------------------------------------------------- -->
@@ -217,7 +199,7 @@
                 <h2>Info</h2>
                 <p>
                     Calc TVA &copy; 2021 <a rel="external noopener" href="https://derekerb.solutions" title="Derek Erb Solutions Web Site">Derek Erb Solutions</a>.<br>
-                    Version 0.9.0.1a<br>
+                    Version 0.9.0.1b<br>
                     <a href="mailto:info@derekerb.solutions">info@derekerb.solutions</a><br>
                 </p>
             </section>
