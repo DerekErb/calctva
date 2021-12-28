@@ -105,6 +105,7 @@ header {
     text-align: center;
     width: 100%;
     height: 50px;
+    margin-top: 1px;
 }
 
 /*
@@ -153,6 +154,12 @@ header {
     bottom: 0;
     box-shadow: -3px 1px 2px grey;
 }
+
+    @media screen and (min-width: 1000px) {
+        #navMain {
+            bottom: 2px;
+        }
+    }
 
 #navMain button {
     display: flex;
@@ -223,7 +230,7 @@ header {
         }
 
         #navActiveIndicator {
-            height: 120%;
+            height: 100%;
         }
     }
 
@@ -294,14 +301,19 @@ article.inactive {
     padding: 0.4em 0.5em 0.4em 0.4em;
     -webkit-appearance: none;
     -moz-appearance: textfield;
+    width: 20ch;
 }
 
 #dCalcWrap button:focus, #dCalcWrap button:active {
-    outline: 4px solid var(--BtnSecBack);
+    /* outline: 4px solid var(--BtnSecBack); */
+    box-shadow: 0 0 0 3px var(--BtnSecBack);
+    outline: none;
 }
 
 #dCalcWrap input:focus, #dCalcWrap input:active {
-    outline: 4px solid var(--BtnBack-4);
+    /* outline: 4px solid var(--BtnBack-4); */
+    box-shadow: 0 0 0 3px var(--BtnBack-4);
+    outline: none;
 }
 
 #dCalcWrap input::-webkit-outer-spin-button,
@@ -317,6 +329,7 @@ input::-webkit-inner-spin-button {
 #dCalcWrap label {
     width: 20%;
     text-align: right;
+    margin-right: 5%;
 }
 
 #dCommands {
@@ -398,7 +411,12 @@ input::-webkit-inner-spin-button {
 #dBtns button.active {
     background-color: var(--TxtColor);
     color: var(--BtnBack-4);
-    box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 5px 1px rgba(0,0,0,0.5),
+                0 0 0 3px var(--BtnBack-4);
+}
+
+#dBtns button.active:active, #dBtns button.active:focus {
+    box-shadow: 0 0 0 3px var(--BtnSecBack), inset 0 0 5px 1px rgba(0,0,0,0.5);
 }
 
 #dAdd {
@@ -412,7 +430,9 @@ input::-webkit-inner-spin-button {
 }
 
 #dAdd button:focus, #dAdd button:active {
-    outline: 4px solid var(--BtnBack-4);
+    box-shadow: 0 0 0 3px var(--BtnBack-4);
+    outline: none;
+    /*outline: 4px solid var(--BtnBack-4);*/
 }
 
     /*********************************************************************
