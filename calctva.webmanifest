@@ -49,18 +49,14 @@
             "sizes":                "16x16"
         }],
         "screenshots": [{
-            "src":                  "/ss/sscalctva-1.webp",
-            "sizes":                "591x1280",
-            "type":                 "webp"
-        },{
             "src":                  "/ss/sscalctva-1.png",
-            "sizes":                "591x1280"
-        },{
-            "src":                  "/ss/sscalctva-2.webp",
             "sizes":                "591x1280",
-            "type":                 "webp"
+            "platform":             "narrow",
+            "label":                "Calculatrice de TVA"
         },{
             "src":                  "/ss/sscalctva-2.png",
-            "sizes":                "591x1280"
+            "sizes":                "591x1280",
+            "platform":             "narrow",
+            "label":                "Instructions"
         }]
 }
