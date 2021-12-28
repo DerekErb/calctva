@@ -14,6 +14,8 @@ class CalcTVA {
     fldTTC;
     fldTVA;
 
+    fldMaxChar = 20;
+
     ht;
     ttc;
     tva;
@@ -134,6 +136,16 @@ class CalcTVA {
         document.getElementById('btn0').classList.add('active');
         this.fldHT.select();
         document.getElementById('sectTotals').style.display = 'none';
+    }
+
+    /**************************************************************************
+    ** setFldMaxChar()
+    ** Sets the inputs' max characters that can be entered
+    **************************************************************************/
+    setFldMaxChar(number) {
+        if (window.matchMedia("(max-width: 500px)").matches) {
+            this.fldMaxChar = number || 9;
+        }
     }
 
     /**************************************************************************
@@ -267,6 +279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     calc = new CalcTVA('fldTTC', 'fldHT', 'fldTVA', 'btnUndo', 'btnReset');
     calc.getTaux();
     calc.showTVA();
+    calc.setFldMaxChar();
 
     // Initialise first field
     calc.fldHT.setAttribute("lastused",'');
@@ -343,14 +356,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /******* Changes HT or TTC field whenever the other field changes *********/
     document.addEventListener('input', (event) => {
-        if (event.target === document.getElementById('fldHT'))
-            calc.showTTC();
-        if (event.target === document.getElementById('fldTTC'))
-            calc.showHT();
+        if (event.target === document.getElementById('fldHT')) {
+            if (event.target.value.length <= calc.fldMaxChar) {
+                calc.showTTC();
+            }
+            else {
+                calc.fldHT.value = parseFloat(calc.ht);
+            }
+        }
+        if (event.target === document.getElementById('fldTTC')) {
+            if (event.target.value.length <= calc.fldMaxChar) {
+                calc.showHT();
+            }
+            else {
+                calc.fldTTC.value = parseFloat(calc.ttc);
+            }
+        }
         calc.showTVA();
     });
 
-    /********* Enables entry creation and totals udpdate by pressing Enter key ********/
+    /********* Enables entry creation and totals update by pressing Enter key ********/
     document.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
