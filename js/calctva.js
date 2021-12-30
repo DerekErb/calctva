@@ -287,10 +287,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // DEBUG Display offline status
     if (navigator.offline) {
         console.log('Window offline');
-        document.body.style.backgroundColor = 'var(--MainBack)';
+        document.body.style.backgroundColor = 'slategrey';
     } else {
         console.log("Window online");
-        document.body.style.backgroundColor = 'slategrey';
+        document.body.style.backgroundColor = 'var(--MainBack)';
     }
 
     /*************************************************************************
