@@ -181,38 +181,38 @@ class CalcTVA {
         document.querySelectorAll('.dTotal').forEach(total => total.remove());
 
         this.arrTotals.forEach(array => {
-                if (array[1] !== 0) {
-                    // show total if array isn't empty
-                    let div = document.createElement('div');
-                    div.classList.add('dTotal');
-                    div.id = 'dTotal' + (array[0] * 1000).toString();
-                    let lblRate = document.createElement('label');
-                    lblRate.classList.add('lblRate');
-                    lblRate.innerHTML = (array[0] * 100).toFixed(2) + '&nbsp;%';
-                    lblRate.setAttribute('for', 'inputTVA' + (array[0] * 100).toString());
-                    lblRate.setAttribute('aria-label', 'Totaux' + (array[0] * 100).toString() + ' %');
-                    let input1 = document.createElement('input');
-                    input1.classList.add('inputHT');
-                    input1.setAttribute('readonly', '');
-                    input1.setAttribute('aria-label', 'Total Hors-Taxe' + (array[0] * 100).toString() + ' %');
-                    input1.value = (array[1]).toFixed(2) + ' €';
-                    let input2 = document.createElement('input');
-                    input2.classList.add('inputTVA');
-                    input2.id = 'inputTVA' + (array[0] * 100).toString();
-                    input2.setAttribute('readonly', '');
-                    input2.setAttribute('aria-label', 'Total TVA' + (array[0] * 100).toString() + ' %');
-                    input2.value = array[2].toFixed(2) + ' €';
-                    let input3 = document.createElement('input');
-                    input3.classList.add('inputTTC');
-                    input3.setAttribute('readonly', '');
-                    input3.setAttribute('aria-label', 'Total TTC' + (array[0] * 100).toString() + ' %');
-                    input3.value = array[3].toFixed(2) + ' €';
-                    div.appendChild(lblRate);
-                    div.appendChild(input1);
-                    div.appendChild(input2);
-                    div.appendChild(input3);
-                    document.getElementById('dTotals').appendChild(div);
-                }
+            if (array[1] !== 0) {
+                // show total if array isn't empty
+                let div = document.createElement('div');
+                div.classList.add('dTotal');
+                div.id = 'dTotal' + (array[0] * 1000).toString();
+                let lblRate = document.createElement('label');
+                lblRate.classList.add('lblRate');
+                lblRate.innerHTML = (array[0] * 100).toFixed(2) + '&nbsp;%';
+                lblRate.setAttribute('for', 'inputTVA' + (array[0] * 100).toString());
+                lblRate.setAttribute('aria-label', 'Totaux' + (array[0] * 100).toString() + ' %');
+                let input1 = document.createElement('input');
+                input1.classList.add('inputHT');
+                input1.setAttribute('readonly', '');
+                input1.setAttribute('aria-label', 'Total Hors-Taxe' + (array[0] * 100).toString() + ' %');
+                input1.value = (array[1]).toFixed(2) + ' €';
+                let input2 = document.createElement('input');
+                input2.classList.add('inputTVA');
+                input2.id = 'inputTVA' + (array[0] * 100).toString();
+                input2.setAttribute('readonly', '');
+                input2.setAttribute('aria-label', 'Total TVA' + (array[0] * 100).toString() + ' %');
+                input2.value = array[2].toFixed(2) + ' €';
+                let input3 = document.createElement('input');
+                input3.classList.add('inputTTC');
+                input3.setAttribute('readonly', '');
+                input3.setAttribute('aria-label', 'Total TTC' + (array[0] * 100).toString() + ' %');
+                input3.value = array[3].toFixed(2) + ' €';
+                div.appendChild(lblRate);
+                div.appendChild(input1);
+                div.appendChild(input2);
+                div.appendChild(input3);
+                document.getElementById('dTotals').appendChild(div);
+            }
         })
     }
 
@@ -284,6 +284,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialise first field
     calc.fldHT.setAttribute("lastused",'');
 
+    // DEBUG Display offline status
+    if (navigator.offline) {
+        console.log('Window offline');
+        document.body.style.backgroundColor = 'var(--MainBack)';
+    } else {
+        console.log("Window online");
+        document.body.style.backgroundColor = 'slategrey';
+    }
+
     /*************************************************************************
      ** EVENT LISTENER
      ** CLICK
@@ -307,9 +316,12 @@ document.addEventListener('DOMContentLoaded', () => {
         /******** Creates an entry, calculates and renders the totals, and shows sectTotals if it's hidden *********/
         if (event.target === document.getElementById('btnAdd') && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
-            // If on mobile, no automatic input select
             if (window.matchMedia("(min-width: 500px)").matches) {
+                // If on mobile, no automatic input select
                 document.querySelector('input[lastused]').select();
+                // If on mobile try vibrate function
+                if (window.navigator.vibrate)
+                    window.navigator.vibrate([300,100,300]);
             }
             calc.showTotals();
             document.getElementById('sectTotals').style.display = 'flex';
@@ -342,7 +354,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
-
     });
 
     /*************************************************************************
@@ -402,6 +413,8 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sectTotals').style.display = 'flex';
         }
     });
+
+    console.log('I Got this far!');
 });
 
 /*************************************************************************
@@ -416,3 +429,7 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+// DEBUG Offline testing
+window.addEventListener("load", function() {
+})
