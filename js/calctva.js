@@ -284,6 +284,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialise first field
     calc.fldHT.setAttribute("lastused",'');
 
+    /*************************************************************************
+     ** EVENT LISTENER
+     ** CLICK
+     *************************************************************************/
     document.addEventListener('click', (event) => {
 
         /********* Adds active class to clicked rate button *********/
@@ -320,7 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sectTotals').style.display = 'none';
         }
 
-
         /******** NAVBAR FUNCTIONS ********/
         if (event.target.classList.contains('btnNav')) {
             document.querySelectorAll('.btnNav').forEach(button => {
@@ -342,8 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    /****** Adds 'lastused' attribute when input is focused and remove previous one *******/
+    /*************************************************************************
+     ** EVENT LISTENER
+     ** FOCUSIN
+     *************************************************************************/
     document.addEventListener('focusin', (event) => {
+        /****** Adds 'lastused' attribute when input is focused and remove previous one *******/
         if (event.target === calc.fldHT) {
             calc.fldTTC.removeAttribute('lastused');
             event.target.setAttribute('lastused', '');
@@ -354,8 +361,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /******* Changes HT or TTC field whenever the other field changes *********/
+    /*************************************************************************
+     ** EVENT LISTENER
+     ** INPUT
+     *************************************************************************/
     document.addEventListener('input', (event) => {
+        /******* Changes HT or TTC field whenever the other field changes *********/
         if (event.target === document.getElementById('fldHT')) {
             if (event.target.value.length <= calc.fldMaxChar) {
                 calc.showTTC();
@@ -375,8 +386,12 @@ document.addEventListener('DOMContentLoaded', () => {
         calc.showTVA();
     });
 
-    /********* Enables entry creation and totals update by pressing Enter key ********/
+    /*************************************************************************
+     ** EVENT LISTENER
+     ** KEYDOWN
+     *************************************************************************/
     document.addEventListener('keydown', (event) => {
+        /********* Enables entry creation and totals update by pressing Enter key ********/
         if (event.key === 'Enter' && document.getElementById('fldHT').value.length > 0) {
             calc.addEntry();
             // If on mobile, no automatic input select
