@@ -395,9 +395,9 @@ document.addEventListener('DOMContentLoaded', () => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/calctvasw.js').then(reg => {
-            console.log('DEBUG: Registered!', reg);
+            console.log('DEBUG: SW Registered!', reg);
         }).catch(err => {
-            console.log('DEBUG: Registration failed: ', err);
+            console.log('DEBUG: SW Registration failed: ', err);
         });
     });
 }
