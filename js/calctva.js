@@ -411,8 +411,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sectTotals').style.display = 'flex';
         }
     });
-
-    console.log('I Got this far!');
 });
 
 /*************************************************************************
