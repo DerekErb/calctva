@@ -287,7 +287,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // DEBUG Display offline status
     if (navigator.offline) {
         document.body.style.backgroundColor = 'slategrey';
-    } else {
+    }
+    else {
         document.body.style.backgroundColor = 'var(--MainBack)';
     }
 
