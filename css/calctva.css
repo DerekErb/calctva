@@ -167,6 +167,7 @@ header {
     justify-content: center;
     align-items: center;
     appearance: none;
+    -moz-appearance: none;
     margin: 2%;
     width: calc(100% / 2);
     height: 75%;
@@ -207,8 +208,6 @@ header {
     left: 1%;
     width: calc(98% /2);
     height: 85%;
-    /*background-color: rgba(149, 165, 166, 0.2);*/
-    /*background-color: var(--MainBack);*/
     transition: transform 0.3s;
     pointer-events: none;
     box-shadow: 0px 0px 3px var(--Active);
@@ -305,13 +304,11 @@ article.inactive {
 }
 
 #dCalcWrap button:focus, #dCalcWrap button:active {
-    /* outline: 4px solid var(--BtnSecBack); */
     box-shadow: 0 0 0 3px var(--BtnSecBack);
     outline: none;
 }
 
 #dCalcWrap input:focus, #dCalcWrap input:active {
-    /* outline: 4px solid var(--BtnBack-4); */
     box-shadow: 0 0 0 3px var(--BtnBack-4);
     outline: none;
 }
@@ -432,7 +429,6 @@ input::-webkit-inner-spin-button {
 #dAdd button:focus, #dAdd button:active {
     box-shadow: 0 0 0 3px var(--BtnBack-4);
     outline: none;
-    /*outline: 4px solid var(--BtnBack-4);*/
 }
 
     /*********************************************************************
