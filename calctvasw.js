@@ -9,7 +9,7 @@
  ********************************************************************/
 
 // Local all app file assets to be loaded to the precache
-const cacheName = 'calctva-cache-v0.9.0.10';
+const cacheName = 'calctva-cache-v0.9.0.11';
 
 self.addEventListener('install', (event) => {
     console.log('DEBUG: Service Worker Install event!');
@@ -29,6 +29,7 @@ self.addEventListener('install', (event) => {
                 '/imgs/reset.svg',
                 '/imgs/settings.svg',
                 '/imgs/undo.svg',
+                '/js/calctvaclass.js',
                 '/js/calctva.js',
                 '/favicon-512x512.png',
                 '/favicon-144x144.png',
