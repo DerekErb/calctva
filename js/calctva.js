@@ -12,6 +12,7 @@
  ** EVENT LISTENERS
  ** Events to trigger once the DOM is loaded
 *************************************************************************/
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Create calc class instance
@@ -25,9 +26,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // DEBUG Display offline status
     if (navigator.offline) {
+        console.log('DEBUG: Offline');
         document.body.style.backgroundColor = 'slategrey';
     }
     else {
+        console.log('DEBUG: Online');
         document.body.style.backgroundColor = 'var(--MainBack)';
     }
 
@@ -165,3 +168,4 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
