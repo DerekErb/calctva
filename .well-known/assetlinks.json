@@ -1,6 +1,9 @@
 [{
         "relation": ["delegate_permission/common.handle_all_urls"],
         "target" : { "namespace": "android_app", "package_name": "app.calctva.twa",
-                     "sha256_cert_fingerprints": ["55:BC:8B:C4:1E:9F:28:0B:12:E8:3C:6C:6D:8C:FD:81:7F:13:B1:F9:3B:7D:41:CB:D6:C6:16:57:7D:7F:2B:5F"] }
+                     "sha256_cert_fingerprints": [
+                       "55:BC:8B:C4:1E:9F:28:0B:12:E8:3C:6C:6D:8C:FD:81:7F:13:B1:F9:3B:7D:41:CB:D6:C6:16:57:7D:7F:2B:5F",
+                       "00:99:95:F1:24:A5:DB:26:9E:44:A6:71:F9:E6:9F:84:13:6F:B7:D5:B2:B1:02:E8:EF:78:AA:73:2B:D4:45:6C"
+                     ] }
       }
 ]
