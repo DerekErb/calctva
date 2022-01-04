@@ -24,13 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialise first field
     calc.fldHT.setAttribute("lastused",'');
 
-    // DEBUG Display offline status
+    // Display offline/online status
     if (navigator.offline) {
-        console.log('DEBUG: Offline');
         document.body.style.backgroundColor = 'slategrey';
     }
     else {
-        console.log('DEBUG: Online');
         document.body.style.backgroundColor = 'var(--MainBack)';
     }
 
@@ -162,9 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('/calctvasw.js').then(reg => {
-            console.log('DEBUG: SW Registered!', reg);
         }).catch(err => {
-            console.log('DEBUG: SW Registration failed: ', err);
         });
     });
 }
