@@ -9,7 +9,7 @@
  ********************************************************************/
 
 // Local all app file assets to be loaded to the precache
-const cacheName = 'calctva-cache-v1.0';
+const cacheName = 'calctva-cache-v1.0.2a';
 
 self.addEventListener('install', (event) => {
     event.waitUntil(
