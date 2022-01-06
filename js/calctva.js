@@ -112,12 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === calc.fldHT) {
             calc.fldTTC.removeAttribute('lastused');
             event.target.setAttribute('lastused', '');
-            calc.setLastInput(calc.idHT);
+            calc.setLastInput(calc.fldHT);
         }
         if (event.target === calc.fldTTC) {
             calc.fldHT.removeAttribute('lastused');
             event.target.setAttribute('lastused', '');
-            calc.setLastInput(calc.idTTC);
+            calc.setLastInput(calc.fldTTC);
         }
     });
 

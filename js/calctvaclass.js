@@ -17,9 +17,6 @@ class CalcTVA {
 
     fldMaxChar = 20;
 
-    idHT;
-    idTTC;
-
     ht;
     ttc;
     tva;
@@ -36,16 +33,14 @@ class CalcTVA {
     ];
 
     constructor(idTTC, idHT, idTVA, idBtnUndo, idBtnReset) {
-        this.idHT           =   idHT;
-        this.idTTC          =   idTTC;
-        this.fldHT          =   document.getElementById(this.idHT);
-        this.fldTTC         =   document.getElementById(this.idTTC);
+        this.fldHT          =   document.getElementById(idHT);
+        this.fldTTC         =   document.getElementById(idTTC);
         this.fldTVA         =   document.getElementById(idTVA);
         this.btnUndo        =   document.getElementById(idBtnUndo);
         this.btnReset       =   document.getElementById(idBtnReset);
 
         // Set HT input as default first input field
-        this.fldLastInput   =   this.idHT;
+        this.fldLastInput   =   this.fldHT;
     }
 
 
@@ -125,7 +120,7 @@ class CalcTVA {
      ** Set focus to the last input field
      **************************************************************************/
     gotoLastInput() {
-        document.getElementById(this.fldLastInput).focus();
+        this.fldLastInput.focus();
     }
 
     /**************************************************************************
