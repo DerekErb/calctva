@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             calc.showTotals();
             document.getElementById('sectTotals').style.display = 'flex';
+            calc.gotoLastInput();
         }
 
         /****** Undo function *****/
