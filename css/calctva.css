@@ -92,7 +92,9 @@ header {
     width: 100%;
 
     /* Margin for IPP ads */
+    /* REMOVE ADS FOR APPS
     margin-top: 80px;
+    */
 
     /*
     border: 1px solid white;
@@ -106,11 +108,13 @@ header {
     *********************************************************************/
 
     /* Margin for IPP ads */
+    /* REMOVE ADS FOR APPS
     @media screen and (min-width: 1000px) {
         header {
             margin-top: 1px;
         }
     }
+    */
 
 /*
 #btnSettings, #btnThemeSwitch {
