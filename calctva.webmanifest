@@ -9,7 +9,7 @@
     "orientation":                  "portrait",
     "prefer_related_applications":  false,
     "scope":                        "/",
-    "short_name ":                  "Calc TVA",
+    "short_name":                   "Calc TVA",
     "start_url":                    "/index.html",
     "theme_color":                  "#2E2828",
     "icons": [{
@@ -18,42 +18,48 @@
             "type":                 "image/webp"
         },{
             "src":                  "/favicon-512x512.png",
-            "sizes":                "512x512"
+            "sizes":                "512x512",
+            "type":                 "image/png"
         },{
             "src":                  "/favicon-192x192.webp",
             "sizes":                "192x192",
             "type":                 "image/webp"
         },{
             "src":                  "/favicon-192x192.png",
-            "sizes":                "192x192"
+            "sizes":                "192x192",
+            "type":                 "image/png"
         },{
             "src":                  "/favicon-144x144.webp",
             "sizes":                "144x144",
             "type":                 "image/webp"
         },{
             "src":                  "/favicon-144x144.png",
-            "sizes":                "144x144"
+            "sizes":                "144x144",
+            "type":                 "image/png"
         },{
             "src":                  "/favicon-96x96.webp",
             "sizes":                "96x96",
             "type":                 "image/webp"
         },{
             "src":                  "/favicon-96x96.png",
-            "sizes":                "96x96"
+            "sizes":                "96x96",
+            "type":                 "image/png"
         },{
             "src":                  "/favicon-32x32.webp",
             "sizes":                "32x32",
             "type":                 "images/webp"
         },{
             "src":                  "/favicon-32x32.png",
-            "sizes":                "32x32"
+            "sizes":                "32x32",
+            "type":                 "image/png"
         },{
             "src":                  "/favicon-16x16.webp",
             "sizes":                "16x16",
             "type":                 "images/webp"
         },{
             "src":                  "/favicon-16x16.png",
-            "sizes":                "16x16"
+            "sizes":                "16x16",
+            "type":                 "image/png"
         }],
         "screenshots": [{
             "src":                  "/ss/sscalctva-1.png",
