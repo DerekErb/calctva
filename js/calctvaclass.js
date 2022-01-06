@@ -13,8 +13,12 @@ class CalcTVA {
     fldHT;
     fldTTC;
     fldTVA;
+    fldLastInput;
 
     fldMaxChar = 20;
+
+    idHT;
+    idTTC;
 
     ht;
     ttc;
@@ -32,11 +36,16 @@ class CalcTVA {
     ];
 
     constructor(idTTC, idHT, idTVA, idBtnUndo, idBtnReset) {
-        this.fldTTC         = document.getElementById(idTTC);
-        this.fldHT          = document.getElementById(idHT);
-        this.fldTVA         = document.getElementById(idTVA);
-        this.btnUndo        = document.getElementById(idBtnUndo);
-        this.btnReset       = document.getElementById(idBtnReset);
+        this.idHT           =   idHT;
+        this.idTTC          =   idTTC;
+        this.fldHT          =   document.getElementById(this.idHT);
+        this.fldTTC         =   document.getElementById(this.idTTC);
+        this.fldTVA         =   document.getElementById(idTVA);
+        this.btnUndo        =   document.getElementById(idBtnUndo);
+        this.btnReset       =   document.getElementById(idBtnReset);
+
+        // Set HT input as default first input field
+        this.fldLastInput   =   this.idHT;
     }
 
 
@@ -112,6 +121,14 @@ class CalcTVA {
     }
 
     /**************************************************************************
+     ** gotoLastInput()
+     ** Set focus to the last input field
+     **************************************************************************/
+    gotoLastInput() {
+        document.getElementById(this.fldLastInput).focus();
+    }
+
+    /**************************************************************************
     ** reset()
     ** Resets the arrays and interface
     **************************************************************************/
@@ -154,6 +171,14 @@ class CalcTVA {
     **************************************************************************/
     setHT(fHT) {
         this.ht = fHT || parseFloat(this.fldHT.value).toFixed(2);
+    }
+
+    /**************************************************************************
+     ** setLastInput()
+     ** Sets the ID of the last input field focused
+     **************************************************************************/
+    setLastInput(fldLastInput) {
+        this.fldLastInput = fldLastInput;
     }
 
     /**************************************************************************

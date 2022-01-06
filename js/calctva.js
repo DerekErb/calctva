@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialise first field
     calc.fldHT.setAttribute("lastused",'');
+    calc.gotoLastInput();
 
     // Display offline/online status
     if (navigator.offline) {
@@ -93,6 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             })
         }
+
+        /******** NAVBAR CALC PAGE ********/
+        if (event.target === document.getElementById('btnCalc')) {
+            calc.gotoLastInput();
+        }
+
     });
 
     /*************************************************************************
@@ -104,10 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (event.target === calc.fldHT) {
             calc.fldTTC.removeAttribute('lastused');
             event.target.setAttribute('lastused', '');
+            calc.setLastInput(calc.idHT);
         }
         if (event.target === calc.fldTTC) {
             calc.fldHT.removeAttribute('lastused');
             event.target.setAttribute('lastused', '');
+            calc.setLastInput(calc.idTTC);
         }
     });
 
