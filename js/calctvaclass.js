@@ -58,7 +58,8 @@ class CalcTVA {
     ** addEntryHTML()
     ** Creates all the HTML elements of the last entry and inserts them in #sectTotals
     ***************************************************************************************/
-    /*addEntryHTML() {
+    /* FUTURE HISTORY SECTION
+    addEntryHTML() {
         let div = document.createElement('div');
         div.classList.add('dEntry');
         let input1 = document.createElement('p');
@@ -74,7 +75,8 @@ class CalcTVA {
         div.appendChild(input2);
         div.appendChild(input3);
         document.getElementById('sectDetails').insertBefore(div, document.querySelector('.dEntry'));
-    } */
+    }
+    */
 
     /**********************************************************
      *** calcHT()

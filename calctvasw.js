@@ -11,6 +11,10 @@
 // Local all app file assets to be loaded to the precache
 const cacheName = 'calctva-cache-v1.0.5b';
 
+/*************************************************************************
+ ** EVENT LISTENER
+ ** INSTALL
+ *************************************************************************/
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(cacheName).then((cache) => {
@@ -38,19 +42,10 @@ self.addEventListener('install', (event) => {
     );
 });
 
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => {
-                if (response) {
-                    return response;
-                }
-                return fetch(event.request)
-            }).catch(error => {
-        })
-    );
-});
-
+/*************************************************************************
+ ** EVENT LISTENER
+ ** ACTIVATE
+ *************************************************************************/
 self.addEventListener('activate', event => {
     const cacheAllowlist = [cacheName];
 
@@ -67,3 +62,21 @@ self.addEventListener('activate', event => {
         })
     );
 });
+
+/*************************************************************************
+ ** EVENT LISTENER
+ ** FETCH
+ *************************************************************************/
+self.addEventListener('fetch', event => {
+    event.respondWith(
+        caches.match(event.request)
+            .then(response => {
+                if (response) {
+                    return response;
+                }
+                return fetch(event.request)
+            }).catch(error => {
+        })
+    );
+});
+

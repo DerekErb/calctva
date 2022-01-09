@@ -28,6 +28,11 @@
     --Active: #5DC0FFFF;
 
     --FontMain: 'Roboto', garmond, times, serif;
+
+    --sMinWidth: 600px;
+    --mMinWidth: 768px;
+    --lMinWidth: 992px;
+    --xlMinWidth: 1200px;
 }
 
 @font-face {
@@ -51,7 +56,7 @@ body {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: var(--lMinWidth)) {
         body {
             width: 50%;
             margin: 0 auto;
@@ -94,25 +99,14 @@ header {
     /* Margin for IPP ads */
     margin-top: 80px;
 
-    /*
+    /* PUB PLACEHOLDER
     border: 1px solid white;
     text-align: center;
     height: 50px;
     */
 }
 
-    /*********************************************************************
-     *  Bigger than tablet
-    *********************************************************************/
-
-    /* Margin for IPP ads */
-    @media screen and (min-width: 1000px) {
-        header {
-            margin-top: 1px;
-        }
-    }
-
-/*
+/* FUTURE HISTORY & SETTINGS SECTIONS
 #btnSettings, #btnThemeSwitch {
     border: none;
     width: 50px;
@@ -159,7 +153,7 @@ header {
     box-shadow: -3px 1px 2px grey;
 }
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: var(--lMinWidth)) {
         #navMain {
             bottom: 2px;
         }
@@ -214,7 +208,7 @@ header {
     height: 85%;
     transition: transform 0.3s;
     pointer-events: none;
-    box-shadow: 0px 0px 3px var(--Active);
+    box-shadow: 0 0 3px var(--Active);
     background: linear-gradient(0deg, rgba(0,0,0,0.2), transparent);
 }
 
@@ -222,7 +216,7 @@ header {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: var(--lMinWidth)) {
         #navMain {
             box-shadow: none;
         }
@@ -392,7 +386,7 @@ input::-webkit-inner-spin-button {
 }
 
 #dBtns button:first-child {
-    margin-left: 0%;
+    margin-left: 0;
     background-color: var(--BtnBack-1);
 }
 
@@ -405,7 +399,7 @@ input::-webkit-inner-spin-button {
 }
 
 #dBtns button:last-child {
-    margin-right: 0%;
+    margin-right: 0;
     background-color: var(--BtnBack-4);
 }
 
@@ -439,7 +433,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than smartphone
     *********************************************************************/
 
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: var(--sMinWidth)) {
         .dCalc {
             justify-content: center;
             width: 90%;
@@ -491,7 +485,7 @@ input::-webkit-inner-spin-button {
 
 .dEntry {
     border-top: 1px solid grey;
-    box-shadow: 0px 2px 5px black;
+    box-shadow: 0 2px 5px black;
     margin: 4px auto;
 }
 
@@ -532,7 +526,7 @@ input::-webkit-inner-spin-button {
 
 #dTotals {
     border: 1px solid grey;
-    box-shadow: 0px 2px 5px black;
+    box-shadow: 0 2px 5px black;
 }
 
 #dTotal200, #dTotal200 input {
@@ -556,7 +550,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than smartphone
     *********************************************************************/
 
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: var(--sMinWidth)) {
             .dTotal input, .dEntry p {
                 margin-right: 7%;
                 width: 22%;
@@ -571,7 +565,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: 1000px) {
+    @media screen and (min-width: var(--mMinWidth)) {
 
             .dTotal {
                 padding: 0 2% 1% 0;
