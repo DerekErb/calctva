@@ -14,6 +14,17 @@
  *
 *********************************************************************/
 
+/*********************************************************************
+ *
+ *  BREAKPOINTS
+ *
+ *  Small min-width:        600px
+ *  Medium min-width:       768px
+ *  Large min-width:        992px
+ *  Extra-Large min-width:  1200px
+
+*********************************************************************/
+
 :root {
     --MainBack: #2E2828;
 
@@ -29,10 +40,6 @@
 
     --FontMain: 'Roboto', garmond, times, serif;
 
-    --sMinWidth: 600px;
-    --mMinWidth: 768px;
-    --lMinWidth: 992px;
-    --xlMinWidth: 1200px;
 }
 
 @font-face {
@@ -56,8 +63,9 @@ body {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: var(--lMinWidth)) {
+    @media screen and (min-width: 992px) {
         body {
+            background-color: green;
             width: 50%;
             margin: 0 auto;
         }
@@ -153,7 +161,7 @@ header {
     box-shadow: -3px 1px 2px grey;
 }
 
-    @media screen and (min-width: var(--lMinWidth)) {
+    @media screen and (min-width: 992px) {
         #navMain {
             bottom: 2px;
         }
@@ -216,7 +224,7 @@ header {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: var(--lMinWidth)) {
+    @media screen and (min-width: 992px) {
         #navMain {
             box-shadow: none;
         }
@@ -433,7 +441,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than smartphone
     *********************************************************************/
 
-    @media screen and (min-width: var(--sMinWidth)) {
+    @media screen and (min-width: 600px) {
         .dCalc {
             justify-content: center;
             width: 90%;
@@ -550,7 +558,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than smartphone
     *********************************************************************/
 
-    @media screen and (min-width: var(--sMinWidth)) {
+    @media screen and (min-width: 600px) {
             .dTotal input, .dEntry p {
                 margin-right: 7%;
                 width: 22%;
@@ -565,7 +573,7 @@ input::-webkit-inner-spin-button {
      *  Bigger than small tablet
     *********************************************************************/
 
-    @media screen and (min-width: var(--mMinWidth)) {
+    @media screen and (min-width: 992px) {
 
             .dTotal {
                 padding: 0 2% 1% 0;
