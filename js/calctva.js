@@ -25,14 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     calc.fldHT.setAttribute("lastused",'');
     calc.gotoLastInput();
 
-    // Display offline/online status
-    if (navigator.offline) {
-        document.body.style.backgroundColor = 'slategrey';
-    }
-    else {
-        document.body.style.backgroundColor = 'var(--MainBack)';
-    }
-
     /*************************************************************************
      ** EVENT LISTENER
      ** CLICK
@@ -162,6 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('sectTotals').style.display = 'flex';
         }
     });
+
+    /*************************************************************************
+     ** EVENT LISTENERS
+     ** OFFLINE / ONLINE
+     *************************************************************************/
+    window.addEventListener('online', chgOnlineStatus);
+    window.addEventListener('offline', chgOnlineStatus);
+
 });
 
 /*************************************************************************
@@ -175,3 +175,10 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+/*************************************************************************
+ ** chgOnlineStatus()
+ *************************************************************************/
+function chgOnlineStatus() {
+    // Change app background if offline
+    document.body.style.backgroundColor = window.navigator.onLine ? 'var(--MainBack)' : 'slategrey';
+}
