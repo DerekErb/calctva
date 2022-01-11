@@ -165,6 +165,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /*************************************************************************
+ ** chgOnlineStatus()
+ *************************************************************************/
+function chgOnlineStatus() {
+    // Change app background if offline
+    document.body.style.backgroundColor = window.navigator.onLine ? 'var(--MainBack)' : 'slategrey';
+}
+
+/*************************************************************************
  ** SERVICE WORKER registration
  *************************************************************************/
 if ('serviceWorker' in navigator) {
@@ -175,10 +183,3 @@ if ('serviceWorker' in navigator) {
     });
 }
 
-/*************************************************************************
- ** chgOnlineStatus()
- *************************************************************************/
-function chgOnlineStatus() {
-    // Change app background if offline
-    document.body.style.backgroundColor = window.navigator.onLine ? 'var(--MainBack)' : 'slategrey';
-}
