@@ -39,12 +39,12 @@
     --Active: #5DC0FFFF;
 
     --FontMain: 'Roboto', garmond, times, serif;
-
 }
 
 @font-face {
     font-family: 'Roboto';
     src: url("/fonts/roboto-regular.ttf");
+    font-display: swap;
 }
 
 * {
