@@ -1,6 +1,0 @@
-[{
-        "relation": ["delegate_permission/common.handle_all_urls"],
-        "target" : { "namespace": "android_app", "package_name": "app.calctva.twa",
-                     "sha256_cert_fingerprints": ["55:BC:8B:C4:1E:9F:28:0B:12:E8:3C:6C:6D:8C:FD:81:7F:13:B1:F9:3B:7D:41:CB:D6:C6:16:57:7D:7F:2B:5F"] }
-      }
-]
