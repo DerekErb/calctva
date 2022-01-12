@@ -13,8 +13,17 @@
 <head>
     <meta charset="utf-8">
 
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';
+            connect-src 'self' www.googletabmanager.com www.google-analytics.com ajax.googleapis.com;
+            img-src 'self' www.google-analytics.com;
+            script-src 'unsafe-inline' 'self' www.googletagmanager.com www.google-analytics.com ajax.googleapis.com">
+
     <!-- PWA Manifest -->
     <link rel="manifest" href="/calctva.webmanifest">
+
+    <!-- PWA Theme Color -->
+    <meta name="theme-color" content="#2E2828" />
 
     <meta name="application-name" content="Calc TVA">
 
@@ -56,7 +65,7 @@
     <!-- Twitter -->
     <meta property="twitter:card" content="summary">
     <meta property="twitter:site" content="@calctva">
-    <meta property="twitter:creator" content="@dcefrance">
+    <meta property="twitter:creator" content="@derbsolutions">
     <meta property="twitter:url" content="https://calctva.app/">
     <meta property="twitter:title" content="Calc TVA">
     <meta property="twitter:description" content="Calculatrice de TVA">
@@ -89,8 +98,6 @@
 
     <meta name="HandheldFriendly" content="true" />
 	<meta name="MobileOptimized" content="320" />
-
-    <meta name="theme-color" content="#2E2828" />
 
     <!-- Font Preloads -->
     <link rel="preload" href="/fonts/roboto-regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -228,7 +235,7 @@
                 <h2>Info</h2>
                 <p>
                     Calc TVA &copy; 2021-2022 <a rel="external noopener" href="https://derekerb.solutions" title="Site Web Derek Erb Solutions">Derek Erb Solutions</a>.<br>
-                    Version 1.0.29b<br>
+                    Version 1.0.30b<br>
                     <a href="mailto:info@calctva.app">info@calctva.app</a> -
                     Twitter : <a rel="external noopener" href="https://twitter.com/calctva" title="Twitter">@calctva</a><br>
                 </p>
