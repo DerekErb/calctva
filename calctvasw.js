@@ -9,7 +9,7 @@
  ********************************************************************/
 
 // Local all app file assets to be loaded to the precache
-const cacheName = 'calctva-cache-v1.0.26b ';
+const cacheName = 'calctva-cache-v1.0.27b ';
 
 /*************************************************************************
  ** EVENT LISTENER
